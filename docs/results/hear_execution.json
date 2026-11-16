@@ -1,5 +1,5 @@
 {
-  "status": "smoke_passed_full_frozen_running",
+  "status": "completed_and_analyzed",
   "private_root_relative_to_benchmark_root": "hear_protocol/20261116T011601Z",
   "checkpoint": {
     "repository": "google/hear-pytorch",
@@ -122,11 +122,21 @@
   "smoke_elapsed_seconds": 255,
   "job_states_at_inspection": {
     "27612307": "COMPLETED",
-    "27612308": "RUNNING",
-    "27612309": "PENDING_DEPENDENCY",
-    "27612310": "PENDING_DEPENDENCY",
-    "27612311": "PENDING_DEPENDENCY",
-    "27612312": "PENDING_DEPENDENCY",
-    "27612313": "PENDING_DEPENDENCY"
-  }
+    "27612308": "COMPLETED",
+    "27612309": "COMPLETED",
+    "27612310": "COMPLETED",
+    "27612311": "COMPLETED",
+    "27612312": "COMPLETED",
+    "27612313": "COMPLETED"
+  },
+  "job_elapsed": {
+    "27612307": "00:04:15",
+    "27612308": "01:00:14",
+    "27612309": "00:42:36",
+    "27612310": "01:21:28",
+    "27612311": "01:18:23",
+    "27612312": "02:25:50",
+    "27612313": "00:27:55"
+  },
+  "completed_analysis": "hear_completed/summary.json"
 }

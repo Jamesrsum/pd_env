@@ -1,6 +1,7 @@
 # HeAR and representation-learning development protocol
 
-Status: 2026-11-15 America/New_York (HeAR submission 2026-11-16 UTC). Final test remains sealed. Improvements
+Status: all HeAR jobs completed; see [completed results](HEAR_RESULTS.md).
+Final test remains sealed. Improvements
 below are hypotheses, not claimed results. Code and aggregate summaries belong
 in Git; recordings, embeddings, individual predictions and weights remain private.
 

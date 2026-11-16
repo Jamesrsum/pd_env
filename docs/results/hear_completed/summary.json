@@ -1,0 +1,392 @@
+{
+  "status": "completed_development_analysis",
+  "manifest_sha256": "35e5a70030b4bc116a8f11854119f80c0d70f2d059171931269e8c065988c53b",
+  "recordings_extracted": 53122,
+  "participants_train": 3397,
+  "validation_participants": 729,
+  "validation_pd": 146,
+  "validation_controls": 583,
+  "validation_duplicate_components": 729,
+  "test_labels_read": false,
+  "branch_initialization_matched": true,
+  "training_audits": {
+    "warmup": {
+      "selected_epoch": 10,
+      "initial_auroc": 0.5071782701661223,
+      "backbone_changed": false,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true
+    },
+    "native_frozen": {
+      "selected_epoch": 20,
+      "initial_auroc": 0.686576282337461,
+      "backbone_changed": false,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true
+    },
+    "last2": {
+      "selected_epoch": 20,
+      "initial_auroc": 0.686576282337461,
+      "backbone_changed": true,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true
+    },
+    "full": {
+      "selected_epoch": 20,
+      "initial_auroc": 0.686576282337461,
+      "backbone_changed": true,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true
+    }
+  },
+  "corrected_AST_audits": {
+    "frozen": {
+      "best_phase_auroc": 0.8714607956014004,
+      "selected_epoch": 19,
+      "backbone_changed": false,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true
+    },
+    "last2": {
+      "best_phase_auroc": 0.8671138889541576,
+      "selected_epoch": 13,
+      "backbone_changed": true,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true
+    },
+    "full": {
+      "best_phase_auroc": 0.8646702225146269,
+      "selected_epoch": 20,
+      "backbone_changed": true,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true
+    }
+  },
+  "metrics": {
+    "frozen_mean_logistic": {
+      "auroc": 0.8699804976620691,
+      "auprc": 0.68578746214767,
+      "log_loss": 0.3336195520622898,
+      "brier": 0.10186703012252585,
+      "accuracy_at_0_5": 0.8641975308641975,
+      "threshold": 0.33170798000000007,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6232876712328768,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "frozen_mean_mlp": {
+      "auroc": 0.8546488404332808,
+      "auprc": 0.6326437029495608,
+      "log_loss": 0.3534043720114831,
+      "brier": 0.11025821678788111,
+      "accuracy_at_0_5": 0.8422496570644719,
+      "threshold": 0.35945177000000006,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6164383561643836,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "frozen_mean_sd_logistic": {
+      "auroc": 0.8582790949035456,
+      "auprc": 0.6896530165452194,
+      "log_loss": 0.34051146562537515,
+      "brier": 0.10293952261825463,
+      "accuracy_at_0_5": 0.8669410150891632,
+      "threshold": 0.32492778000000005,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6232876712328768,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "frozen_mean_sd_mlp": {
+      "auroc": 0.8575976879155995,
+      "auprc": 0.6659214241369521,
+      "log_loss": 0.34517982417103416,
+      "brier": 0.10532423678036568,
+      "accuracy_at_0_5": 0.8518518518518519,
+      "threshold": 0.36668220000000007,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6301369863013698,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "warmup": {
+      "auroc": 0.686576282337461,
+      "auprc": 0.3595803166587126,
+      "log_loss": 0.47442015330260995,
+      "brier": 0.15133004459506003,
+      "accuracy_at_0_5": 0.7997256515775034,
+      "threshold": 0.2537175118923188,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.2534246575342466,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "native_frozen": {
+      "auroc": 0.7228553302474212,
+      "auprc": 0.39940497108160117,
+      "log_loss": 0.45932605910507285,
+      "brier": 0.14626450090578413,
+      "accuracy_at_0_5": 0.8024691358024691,
+      "threshold": 0.27488020062446594,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.3356164383561644,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "last2": {
+      "auroc": 0.8011701402758523,
+      "auprc": 0.5271458214872679,
+      "log_loss": 0.40687417228526385,
+      "brier": 0.12810172016502325,
+      "accuracy_at_0_5": 0.8257887517146777,
+      "threshold": 0.31530445814132696,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.4520547945205479,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "full": {
+      "auroc": 0.8701097300218521,
+      "auprc": 0.6701669612839438,
+      "log_loss": 0.3350545505801639,
+      "brier": 0.10067686049103625,
+      "accuracy_at_0_5": 0.8628257887517147,
+      "threshold": 0.32646244764328003,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6917808219178082,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "panel_whisper_small": {
+      "auroc": 0.8664324819662114,
+      "auprc": 0.6702297415804831,
+      "log_loss": 0.34142157246221383,
+      "brier": 0.10477831375014512,
+      "accuracy_at_0_5": 0.850480109739369,
+      "threshold": 0.33508476614952093,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6438356164383562,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "panel_wavlm_large": {
+      "auroc": 0.8716370215465589,
+      "auprc": 0.6741259643241272,
+      "log_loss": 0.33431151585920926,
+      "brier": 0.10095956651659875,
+      "accuracy_at_0_5": 0.8724279835390947,
+      "threshold": 0.3454160392284394,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.636986301369863,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "panel_hear": {
+      "auroc": 0.8570455132874362,
+      "auprc": 0.6417692197114141,
+      "log_loss": 0.3490440697414182,
+      "brier": 0.1067650171003752,
+      "accuracy_at_0_5": 0.8518518518518519,
+      "threshold": 0.3315266072750092,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6027397260273972,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "panel_early_fusion": {
+      "auroc": 0.8794027115298763,
+      "auprc": 0.7007164946700595,
+      "log_loss": 0.32455324808794206,
+      "brier": 0.09749861195790986,
+      "accuracy_at_0_5": 0.8806584362139918,
+      "threshold": 0.3093914687633515,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6575342465753424,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "panel_age_device": {
+      "auroc": 0.935195845767053,
+      "auprc": 0.750920383756,
+      "log_loss": 0.24876305942112706,
+      "brier": 0.07675421622896433,
+      "accuracy_at_0_5": 0.8861454046639232,
+      "threshold": 0.31471467222864374,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.8698630136986302,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "panel_age_device_whisper": {
+      "auroc": 0.9357010268098405,
+      "auprc": 0.8084874411624792,
+      "log_loss": 0.2492493882607425,
+      "brier": 0.0738197205745255,
+      "accuracy_at_0_5": 0.9026063100137174,
+      "threshold": 0.20466637236132368,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.8698630136986302,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "panel_age_device_fusion": {
+      "auroc": 0.9141779647078173,
+      "auprc": 0.7962179626297952,
+      "log_loss": 0.27233562059459626,
+      "brier": 0.08066889573224746,
+      "accuracy_at_0_5": 0.897119341563786,
+      "threshold": 0.24011616737137467,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.773972602739726,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "panel_equal_average": {
+      "auroc": 0.8697220329425034,
+      "auprc": 0.6737216801019554,
+      "log_loss": 0.3391538317259967,
+      "brier": 0.10244682567541666,
+      "accuracy_at_0_5": 0.869684499314129,
+      "threshold": 0.35177779197692877,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6301369863013698,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "panel_oof_stack": {
+      "auroc": 0.8710613501257078,
+      "auprc": 0.6750603217760949,
+      "log_loss": 0.34148631842968263,
+      "brier": 0.10306585111920506,
+      "accuracy_at_0_5": 0.8600823045267489,
+      "threshold": 0.26635339029723015,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6438356164383562,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "two_encoder_early_fusion": {
+      "auroc": 0.8758664442303625,
+      "auprc": 0.7001688817202493,
+      "log_loss": 0.32733536765374166,
+      "brier": 0.09807888541871215,
+      "accuracy_at_0_5": 0.8655692729766804,
+      "threshold": 0.312693864107132,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6575342465753424,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "ast_frozen": {
+      "auroc": 0.8714607956014004,
+      "auprc": 0.6462113103924285,
+      "log_loss": 0.3467638467457591,
+      "brier": 0.10922174536200545,
+      "accuracy_at_0_5": 0.8463648834019204,
+      "threshold": 0.31124743819236755,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.5958904109589042,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "ast_last2": {
+      "auroc": 0.8671138889541576,
+      "auprc": 0.6370770920674057,
+      "log_loss": 0.35147030613518415,
+      "brier": 0.11041192586834449,
+      "accuracy_at_0_5": 0.8463648834019204,
+      "threshold": 0.30676043033599854,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.5958904109589042,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    },
+    "ast_full": {
+      "auroc": 0.8646702225146269,
+      "auprc": 0.6291981842867977,
+      "log_loss": 0.35423975806255825,
+      "brier": 0.11114756253950965,
+      "accuracy_at_0_5": 0.8463648834019204,
+      "threshold": 0.30801597237586975,
+      "specificity": 0.9005145797598628,
+      "sensitivity": 0.6027397260273972,
+      "controls": 583,
+      "threshold_selection": "validation; exploratory, not a locked test operating point"
+    }
+  },
+  "paired_comparisons": {
+    "full_minus_native_frozen": {
+      "auroc_delta": 0.1472543997744309,
+      "paired_component_bootstrap_95pct": [
+        0.10753892251856106,
+        0.18754619263414699
+      ]
+    },
+    "last2_minus_native_frozen": {
+      "auroc_delta": 0.0783148100284311,
+      "paired_component_bootstrap_95pct": [
+        0.055852542120790535,
+        0.10159156776417307
+      ]
+    },
+    "full_minus_frozen_logistic": {
+      "auroc_delta": 0.00012923235978301584,
+      "paired_component_bootstrap_95pct": [
+        -0.0187355097707551,
+        0.01987574006267434
+      ]
+    },
+    "three_encoder_fusion_minus_best_single_WavLM": {
+      "auroc_delta": 0.007765689983317392,
+      "paired_component_bootstrap_95pct": [
+        -0.007317341157012372,
+        0.024020155717656887
+      ]
+    },
+    "age_device_three_encoder_fusion_minus_age_device": {
+      "auroc_delta": -0.021017881059235632,
+      "paired_component_bootstrap_95pct": [
+        -0.04464226160322284,
+        0.0015054367795020167
+      ]
+    },
+    "age_device_whisper_minus_age_device": {
+      "auroc_delta": 0.000505181042787517,
+      "paired_component_bootstrap_95pct": [
+        -0.01643262983534343,
+        0.015292892911001558
+      ]
+    },
+    "three_minus_two_encoder_fusion": {
+      "auroc_delta": 0.003536267299513729,
+      "paired_component_bootstrap_95pct": [
+        -0.005462397647196487,
+        0.012424074186189965
+      ]
+    },
+    "AST_full_minus_frozen": {
+      "auroc_delta": -0.006790573086773555,
+      "paired_component_bootstrap_95pct": [
+        -0.011863881881418584,
+        -0.0017765677271063128
+      ]
+    },
+    "AST_last2_minus_frozen": {
+      "auroc_delta": -0.004346906647242799,
+      "paired_component_bootstrap_95pct": [
+        -0.007789208469869769,
+        -0.0010110550785643853
+      ]
+    }
+  },
+  "bootstrap_replicates": 2000,
+  "uncertainty_limit": "Exploratory development intervals; conditional on fitted models/selected checkpoints, not corrected for model selection or training seeds.",
+  "training_designs": {
+    "frozen_probe": "all training visits with equal-person weights; train-CV LR selection",
+    "native_adaptation": "one visit/person/epoch; identical LayerNorm+linear head and best warm-up for branches",
+    "downstream_panel": "canonical initial training visit/person; train-CV head selection; training OOF calibration/stacking"
+  },
+  "threshold_selection": "validation only; not a prospective test operating point"
+}

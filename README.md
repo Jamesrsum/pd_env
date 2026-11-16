@@ -100,12 +100,13 @@ and the [complete acoustic feature catalog](docs/ACOUSTIC_FEATURES.md) for the
 All nine public pretrained checkpoints are now downloaded and hash-verified on
 HPC (12.02 GB). Offline GPU smoke checks passed for all nine, using six real
 recordings per checkpoint and both classifier heads. Thirty-three benchmark,
-download and adapter unit checks passed. These are execution checks; no full-
-cohort pretrained experiment or validated predictive performance is claimed.
+download and adapter unit checks passed. Those initial smoke checks verified
+execution; completed development experiments remain separate from final-test evaluation.
 See the [local benchmark guide](docs/LOCAL_PRETRAINED_BENCHMARK.md) and
 [aggregate validation summary](docs/results/pretrained_integration_summary.json).
-HeAR PyTorch is now downloaded and hash-verified. Its dedicated frozen and
-controlled fine-tuning jobs use the [HeAR protocol](docs/HEAR_AND_REPRESENTATION_NEXT_STEPS.md).
+HeAR PyTorch frozen extraction, controlled fine-tuning and downstream comparisons
+have completed. See the [completed results and analysis](docs/HEAR_RESULTS.md)
+and [protocol](docs/HEAR_AND_REPRESENTATION_NEXT_STEPS.md). The final test remains sealed.
 
 Full acoustic preprocessing completed: 64,973/65,022 recordings succeeded.
 The remaining 49 files match their malformed/empty Synapse source objects;
