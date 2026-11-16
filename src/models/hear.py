@@ -53,8 +53,14 @@ class HearAdapter(nn.Module):
     def from_local(cls, model_root, lock_path, block_path=None):
         from transformers import AutoModel
         root, entry = verify_assets(model_root, lock_path)
-        model = cls(AutoModel.from_pretrained(root, local_files_only=True, trust_remote_code=False), block_path)
+        backbone, loading = AutoModel.from_pretrained(root, local_files_only=True,
+            trust_remote_code=False, output_loading_info=True)
+        failures = {k: v for k,v in loading.items() if v}
+        if failures:
+            raise ValueError(f'HeAR checkpoint did not load completely: {failures}')
+        model = cls(backbone, block_path)
         model.asset = entry
+        model.loading_info = loading
         return model
 
     def blocks(self):

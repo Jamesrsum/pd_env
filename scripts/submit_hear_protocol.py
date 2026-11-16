@@ -40,6 +40,13 @@ def main():
     receipt['frozen_branch_job']=submit('branch',receipt['warmup_job'],'frozen');save()
     receipt['last2_job']=submit('branch',receipt['warmup_job'],'last2');save()
     receipt['full_job']=submit('branch',receipt['frozen_branch_job'],'full');save()
+    if os.environ.get('MPOWER_FROZEN_ROOT'):
+        downstream_env={**env,'MPOWER_DOWNSTREAM_CODE':str(code),'MPOWER_DOWNSTREAM_ROOT':str(root/'downstream_panel')}
+        command=['sbatch','--parsable','--dependency=afterok:'+receipt['frozen_job'],'--kill-on-invalid-dep=yes',
+            '--output='+str(logs/'downstream_%j.out'),'--error='+str(logs/'downstream_%j.err'),
+            str(code/'scripts/downstream_panel.slurm')]
+        result=subprocess.run(command,env=downstream_env,text=True,capture_output=True,check=True)
+        receipt['downstream_job']=result.stdout.strip().split(';')[0];save()
     print(json.dumps(receipt,indent=2))
 
 

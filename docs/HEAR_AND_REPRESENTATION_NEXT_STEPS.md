@@ -1,6 +1,6 @@
 # HeAR and representation-learning development protocol
 
-Status: 2026-11-15 America/New_York. Final test remains sealed. Improvements
+Status: 2026-11-15 America/New_York (HeAR submission 2026-11-16 UTC). Final test remains sealed. Improvements
 below are hypotheses, not claimed results. Code and aggregate summaries belong
 in Git; recordings, embeddings, individual predictions and weights remain private.
 
@@ -36,19 +36,15 @@ it does not replace the HeAR experiments.
 
 ## 1. HeAR protocol and access
 
-The official PyTorch distribution is `google/hear-pytorch`, pinned in
+Access is now approved. The official PyTorch distribution is `google/hear-pytorch`, pinned in
 `configs/pretrained_models.lock.json` to
-`f791cd42437c3e268c8ac84707e3508900f65f1a`. Its 1.213 GB weight file is gated.
-The configured credentials returned HTTP 403 when downloading `config.json`.
-A subsequent attempt with the user-supplied credential confirmed it is valid
-(HTTP 200 identity check), but the model returned `GatedRepo`: the account is
-not on the authorized list for `google/hear-pytorch`. The credential was passed
-through hidden terminal input and not saved to project files or command lines;
-it should be revoked/replaced because it was shared in chat. The standard
-`google/hear` home cache contains only README/.gitattributes, without weights.
-HeAR has not run inference, frozen extraction or fine-tuning on this project.
-The account owner must obtain access under the model's terms. No replacement
-random model, alternate unofficial weights or bypass is used.
+`f791cd42437c3e268c8ac84707e3508900f65f1a`. The 1.213 GB download is complete;
+the weight SHA256 is `d44d355816ee4315f67d7810da274409e9b1a6570325fc5ba9ae27555fd81723`.
+Earlier HTTP 403 failures were genuine gated-account restrictions. After the
+user obtained access, the pinned downloader succeeded using configured local
+credentials. No credential is saved in project files or submitted job commands.
+The older `google/hear` home cache was documentation-only; this usable PyTorch
+checkpoint is under `$MPOWER_MODEL_ROOT/checkpoints/hear_pytorch`.
 
 Implementation: `src/models/hear.py`, `scripts/run_hear_protocol.py`,
 `configs/hear_protocol.yaml`, and `scripts/submit_hear_protocol.py`.
@@ -87,27 +83,61 @@ Freeze/control design:
 - Resume includes optimizer, Python/NumPy/CPU/CUDA RNG. Cache identity includes
   waveform/source hashes, pinned model, frontend/adapter code, versions and span.
 
-The real model's block path and installed Transformers compatibility remain
-unverified until access is available. `last2` deliberately refuses to guess a
-module path. After downloading, run readiness to inspect ModuleLists, verify
-which sequence contains the transformer blocks, and set `MPOWER_HEAR_BLOCK_PATH`.
+The actual checkpoint loads completely under Torch 2.15.0+cu132 and Transformers
+4.57.6: no missing, unexpected or mismatched keys. It is a 24-block ViT with
+1024D hidden states and a pretrained linear 1024→512 pooler. The inspected block
+path is `encoder.layer`, now recorded in config. Last-two tuning updates blocks
+22/23 (25,192,448 parameters); full tuning updates 303,199,744 backbone parameters.
+Set `MPOWER_HEAR_BLOCK_PATH=encoder.layer` for the submitter's explicit preflight.
 
 With normal project environment variables set:
 
 ```bash
 python scripts/download_pretrained_models.py --models hear_pytorch --workers 1
 python scripts/run_hear_protocol.py --stage readiness
-# Set MPOWER_HEAR_BLOCK_PATH after inspecting the actual model.
+export MPOWER_HEAR_BLOCK_PATH=encoder.layer
 python scripts/submit_hear_protocol.py
 ```
 
 Submission verifies assets and the block sequence before allocating GPUs. A
-small GPU smoke job tests frozen extraction and all adaptation policies. Full
+small GPU smoke job tests pretrained batch/singleton embedding agreement, a
+serialized checkpoint round trip, frozen extraction and all adaptation policies. Full
 frozen extraction follows only after success, then shared warm-up and branches.
 At most two GPU jobs run simultaneously. The cluster's five-day GPU partition
 limit is retained; jobs checkpoint rather than assume unlimited wall time.
 Frozen extraction also fits weighted LR and small MLP heads on mean/mean+SD.
 Aggregate metrics and private per-person predictions are written outside Git.
+
+Current snapshot: `$MPOWER_BENCHMARK_ROOT/hear_protocol/20261116T011601Z`.
+Jobs: smoke 27612307; frozen extraction/heads 27612308; shared warm-up 27612309;
+frozen branch 27612310; last-two 27612311; full 27612312; CPU downstream panel
+including HeAR 27612313. Full stages depend on successful smoke/extraction;
+the full adaptation branch follows the frozen branch to cap concurrency at two.
+The downstream panel begins after frozen features and baseline heads complete.
+See `docs/results/hear_execution.json` for verified execution status; submission
+alone does not establish completed training or scientific performance.
+
+The first smoke (27612286) correctly failed batch/singleton invariance: maximum
+embedding difference .00190115. Its six dependent jobs were cancelled before
+execution. Explicitly disabling TF32 for both CUDA matmuls and cuDNN convolutions
+resolved the failure without weakening the tolerance. The replacement smoke's
+pretrained `[2,512]` embedding and serialized checkpoint round-trip checks pass
+on an A100 80GB. All HeAR stages use this full-float32 policy; no AMP is enabled.
+
+The numerical retry (27612294) completed all three training policies and their
+parameter-change checks, but review found that its frozen-adaptation completion
+file overwrote frozen-extraction provenance. Its pending full jobs were cancelled.
+Extraction now stays in `runs/frozen/`, the shared checkpoint in `runs/warmup/`,
+and adaptation policies in `runs/adaptation/{frozen,last2,full}/`. A final smoke
+audit requires preserved feature provenance, identical branch initialization,
+head updates in every arm, backbone updates only in adapted arms, and unchanged
+frozen parameters. Full stages cannot start until this final audit succeeds.
+
+Final smoke 27612307 completed successfully in 4m15s, including the artifact and
+all parameter-change audits, on an A100-SXM4 40GB. Full frozen job 27612308 is
+running; warm-up, adaptation and downstream jobs are dependency-pending. The
+21 HeAR/research-protocol tests and five controlled-adaptation tests passed.
+No full-cohort HeAR accuracy or fine-tuning outcome is available at this point.
 
 Official references: [PyTorch example](https://github.com/Google-Health/hear/blob/master/notebooks/quick_start_with_hugging_face_pytorch.ipynb),
 [frontend source](https://github.com/Google-Health/hear/blob/3cba3ba843350a9166227cf56e2a4a58399640d3/python/data_processing/audio_utils.py),
@@ -266,8 +296,7 @@ The new participant-aware objectives and downstream panel do not use it.
 
 ## Decision rules and remaining work
 
-Wait for corrected AST branches and the CPU panel. Resolve HeAR access, verify
-real architecture/output/compatibility, run GPU smoke, then full HeAR baselines.
+Wait for corrected AST branches, the CPU panel and HeAR smoke/full baselines.
 Compare matched frozen and adapted heads before increasing complexity. Broaden
 the downstream panel to HeAR and same-span acoustic features, then implement
 the selected three-arm encoder objective runner with real GPU resource checks.

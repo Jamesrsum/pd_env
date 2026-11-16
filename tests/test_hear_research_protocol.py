@@ -149,8 +149,11 @@ def test_auxiliary_scaling_uses_observed_initial_train_only():
     assert a.shape==mask.shape==(len(f),3)
 
 
-def test_hear_submission_graph_is_smoke_gated(tmp_path,monkeypatch):
+@pytest.mark.parametrize('include_downstream',[False,True])
+def test_hear_submission_graph_is_smoke_gated(tmp_path,monkeypatch,include_downstream):
     from scripts import submit_hear_protocol as submit
+    monkeypatch.delenv('MPOWER_FROZEN_ROOT',raising=False)
+    if include_downstream:monkeypatch.setenv('MPOWER_FROZEN_ROOT',str(tmp_path/'frozen'))
     for key,value in {'MPOWER_MODEL_ROOT':str(tmp_path/'models'),'MPOWER_BENCHMARK_ROOT':str(tmp_path),
         'MPOWER_BENCHMARK_PYTHON':sys.executable,'MPOWER_ADAPT_SNAPSHOT':str(tmp_path/'snapshot'),
         'MPOWER_HEAR_BLOCK_PATH':'inspected.blocks'}.items():monkeypatch.setenv(key,value)
@@ -160,7 +163,7 @@ def test_hear_submission_graph_is_smoke_gated(tmp_path,monkeypatch):
         commands.append(command);return SimpleNamespace(stdout=str(100+len(commands))+'\n')
     monkeypatch.setattr(submit.subprocess,'run',fake_run)
     submit.main()
-    assert len(commands)==6
+    assert len(commands)==6+int(include_downstream)
     assert commands[0][-1]=='smoke'
     assert '--dependency=afterok:101' in commands[1]
     assert '--dependency=afterok:102' in commands[2]
@@ -169,6 +172,9 @@ def test_hear_submission_graph_is_smoke_gated(tmp_path,monkeypatch):
     assert '--dependency=afterok:104' in commands[5]
     receipt=next(tmp_path.glob('hear_protocol/*/submission.json'))
     assert json.loads(receipt.read_text())['full_job']=='106'
+    if include_downstream:
+        assert '--dependency=afterok:102' in commands[6]
+        assert json.loads(receipt.read_text())['downstream_job']=='107'
 
 
 def test_hear_submission_refuses_missing_assets_without_sbatch(tmp_path,monkeypatch):
@@ -178,3 +184,38 @@ def test_hear_submission_refuses_missing_assets_without_sbatch(tmp_path,monkeypa
     def unexpected(*a,**k):raise AssertionError('Must not submit with missing weights')
     monkeypatch.setattr(submit.subprocess,'run',unexpected)
     with pytest.raises(FileNotFoundError,match='HeAR asset unavailable'):submit.main()
+
+
+@pytest.mark.parametrize('missing',[False,True])
+def test_local_hear_load_must_match_every_checkpoint_tensor(tmp_path,monkeypatch,missing):
+    import transformers
+    import src.models.hear as hear
+    monkeypatch.setattr(hear,'verify_assets',lambda *a:(tmp_path,{'revision':'synthetic'}))
+    info={'missing_keys':['encoder.layer.0.weight'] if missing else [],'unexpected_keys':[],
+          'mismatched_keys':[],'error_msgs':[]}
+    def load(*args,**kwargs):
+        assert kwargs['local_files_only'] and kwargs['trust_remote_code'] is False and kwargs['output_loading_info']
+        return SyntheticHear(),info
+    monkeypatch.setattr(transformers.AutoModel,'from_pretrained',load)
+    if missing:
+        with pytest.raises(ValueError,match='did not load completely'):HearAdapter.from_local(tmp_path,tmp_path)
+    else:
+        assert HearAdapter.from_local(tmp_path,tmp_path).loading_info==info
+
+
+def test_smoke_audit_rejects_overwritten_frozen_feature_provenance(tmp_path):
+    from scripts.audit_hear_smoke import audit
+    root=tmp_path/'smoke';root.mkdir()
+    def write(path,data):
+        dest=root/path;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_text(json.dumps(data))
+    write('GPU_VERIFIED.json',{'batch_singleton_invariant':True,'state_reload_invariant':True})
+    write('frozen/DONE.json',{'encoder_unchanged':True,'signature':'synthetic','manifest_sha256':'synthetic'})
+    write('warmup/DONE.json',{'backbone_changed':False,'head_changed':True,'participants_train':8,'participants_val':8})
+    for policy in ['frozen','last2','full']:
+        arm={'status':'complete','requested_policy':policy,'selected_policy':policy,'backbone_changed':policy!='frozen',
+            'head_changed':True,'frozen_parameters_unchanged':True,'test_labels_read':False,
+            'initial_backbone_sha256':'same','initial_head_sha256':'same'}
+        write(f'adaptation/{policy}/DONE.json',arm)
+    assert audit(tmp_path)['frozen_feature_provenance_preserved']
+    write('frozen/DONE.json',arm)
+    with pytest.raises(ValueError,match='provenance lost'):audit(tmp_path)

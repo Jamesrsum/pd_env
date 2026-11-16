@@ -20,10 +20,16 @@ from src.data.benchmark import digest
 
 def main():
     p=argparse.ArgumentParser(__doc__)
-    p.add_argument('--stage',choices=['readiness','extract','warmup','branch'],required=True)
+    p.add_argument('--stage',choices=['readiness','verify','extract','warmup','branch'],required=True)
     p.add_argument('--policy',choices=['frozen','last2','full'],default='frozen')
     p.add_argument('--smoke',action='store_true');p.add_argument('--block-path')
     a=p.parse_args();os.umask(0o077);torch.set_num_threads(4)
+    # Float32 inputs alone do not disable TF32 convolutions/matmuls on A100.
+    # Different window batch sizes otherwise select kernels with visibly
+    # different pooled embeddings. Keep the baseline genuinely float32.
+    torch.set_float32_matmul_precision('highest')
+    torch.backends.cuda.matmul.allow_tf32=False
+    torch.backends.cudnn.allow_tf32=False
     lock=REPO/'configs/pretrained_models.lock.json'
     path,entry=verify_assets(os.environ['MPOWER_MODEL_ROOT'],lock)
     cfg=yaml.safe_load((REPO/'configs/hear_protocol.yaml').read_text())
@@ -32,7 +38,9 @@ def main():
     if a.stage=='readiness':
         print(json.dumps({'status':'assets_and_architecture_loaded','revision':entry['revision'],
             'block_sequences':[(n,len(m)) for n,m in model.backbone.named_modules() if isinstance(m,torch.nn.ModuleList)],
-            'runtime':{'torch':torch.__version__},'inference_tested':False},indent=2));return
+            'loading_info':model.loading_info,'pooler':str(model.backbone.pooler),
+            'runtime':{'torch':torch.__version__,'transformers':importlib.metadata.version('transformers')},
+            'inference_tested':False},indent=2));return
     if not torch.cuda.is_available():raise RuntimeError('Allocated GPU required')
     frame,sha=training_manifest(os.environ['MPOWER_ADAPT_SNAPSHOT'],a.smoke,4)
     cfg.update(manifest_sha256=sha,asset_revision=entry['revision'])
@@ -40,13 +48,39 @@ def main():
     if root==REPO or REPO in root.parents:raise ValueError('Private output required')
     root=root/('smoke' if a.smoke else 'runs');root.mkdir(parents=True,exist_ok=True)
     if a.smoke:cfg.update(warmup_epochs=2,adaptation_epochs=2,effective_batch_size=8)
+    if a.stage=='verify':
+        from src.data.frozen_protocol import common_windows
+        model.configure('frozen');model.to('cuda').eval()
+        wave=np.load(frame.loc[frame.split.eq('train')].iloc[0].waveform_path)
+        windows,_=common_windows(wave,'matched_2s');windows=windows[:2]
+        with torch.no_grad():
+            batch=model.encode_windows(windows,'cuda')
+            singles=torch.cat([model.encode_windows([w],'cuda') for w in windows])
+            torch.testing.assert_close(batch,singles,rtol=2e-4,atol=2e-5)
+            checkpoint=root/'verify_reload.pt'
+            torch.save(model.state_dict(),checkpoint)
+            try:
+                model.load_state_dict(torch.load(checkpoint,map_location='cpu',weights_only=True))
+            finally:
+                checkpoint.unlink(missing_ok=True)
+            torch.testing.assert_close(batch,model.encode_windows(windows,'cuda'),rtol=0,atol=0)
+        result={'status':'real_pretrained_gpu_verified','embedding_shape':list(batch.shape),
+            'batch_singleton_invariant':True,'state_reload_invariant':True,'loading_info':model.loading_info,
+            'pooling':'512D pretrained linear pooler','revision':entry['revision'],'test_labels_read':False,
+            'gpu':torch.cuda.get_device_name(),'torch':torch.__version__}
+        (root/'GPU_VERIFIED.json').write_text(json.dumps(result,indent=2));print(json.dumps(result),flush=True);return
     if a.stage!='extract':
-        out=root/('warmup' if a.stage=='warmup' else a.policy)
+        out=root/'warmup' if a.stage=='warmup' else root/'adaptation'/a.policy
         warm=root/'warmup/best.pt' if a.stage=='branch' else None
+        out.mkdir(parents=True,exist_ok=True)
+        (out/'provenance.json').write_text(json.dumps({'config':cfg,'asset':entry,'loading_info':model.loading_info,
+            'stage':a.stage,'policy':a.policy,'test_labels_read':False,
+            'versions':{p:importlib.metadata.version(p) for p in ['numpy','scipy','torch','transformers']}},indent=2))
         print(json.dumps(run_stage(frame,model,a.policy,cfg,out,'cuda',a.stage,warm),indent=2));return
     model.configure('frozen');model.to('cuda').eval()
     signature=digest({'revision':entry['revision'],'frontend':json.loads((REPO/'src/models/hear_vendor/provenance.json').read_text()),
         'adapter_sha256':hashlib.sha256((REPO/'src/models/hear.py').read_bytes()).hexdigest(),
+        'runner_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'versions':{p:importlib.metadata.version(p) for p in ['numpy','scipy','torch','transformers']},
         'context':'matched_2s','pooling':['mean','mean_population_sd'],'manifest':sha})
     out=root/'frozen';cache=out/signature;cache.mkdir(parents=True,exist_ok=True)

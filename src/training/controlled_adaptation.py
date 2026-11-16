@@ -90,8 +90,9 @@ def run_stage(frame,model,policy,cfg,out,device,stage,warmup=None,max_epochs=Non
     if stage=='branch' and warmup is None:raise ValueError('Branch requires shared best warm-up')
     out=Path(out);out.mkdir(parents=True,exist_ok=True);model.to(device)
     signature=hashlib.sha256(json.dumps({'config':cfg,'policy':policy,'stage':stage},sort_keys=True).encode()).hexdigest()
-    train=frame[frame.split.eq('train')];val=frame[frame.split.eq('val')].drop_duplicates('participant_id')
-    if val.participant_id.duplicated().any():raise ValueError('Repeated initial assessment')
+    train=frame[frame.split.eq('train')];val=frame[frame.split.eq('val')]
+    val=val.loc[val.initial_recording] if 'initial_recording' in val else val.drop_duplicates('participant_id')
+    if val.empty or val.participant_id.duplicated().any():raise ValueError('Missing or repeated canonical initial assessment')
     epochs=cfg['warmup_epochs'] if stage=='warmup' else cfg['adaptation_epochs']
     seed_all(cfg['seed']);history=[];best_key=None;start=0
     if stage=='branch':

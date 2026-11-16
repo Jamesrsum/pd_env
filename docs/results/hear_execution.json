@@ -1,0 +1,132 @@
+{
+  "status": "smoke_passed_full_frozen_running",
+  "private_root_relative_to_benchmark_root": "hear_protocol/20261116T011601Z",
+  "checkpoint": {
+    "repository": "google/hear-pytorch",
+    "revision": "f791cd42437c3e268c8ac84707e3508900f65f1a",
+    "bytes": 1212947234,
+    "sha256": "d44d355816ee4315f67d7810da274409e9b1a6570325fc5ba9ae27555fd81723",
+    "integrity_verified": true,
+    "loading_missing_keys": [],
+    "loading_unexpected_keys": [],
+    "loading_mismatched_keys": []
+  },
+  "architecture": {
+    "type": "ViTModel",
+    "transformer_blocks": 24,
+    "block_path": "encoder.layer",
+    "hidden_dim": 1024,
+    "pooler_dim": 512,
+    "backbone_parameters": 303199744,
+    "last2_trainable_parameters": 25192448
+  },
+  "numerics": {
+    "dtype": "float32",
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "amp": false
+  },
+  "initial_failed_smoke": {
+    "job": "27612286",
+    "reason": "batch/singleton embedding comparison",
+    "maximum_absolute_difference": 0.0019011497497558594,
+    "dependent_full_jobs": "cancelled before execution",
+    "fix": "disable CUDA matmul and cuDNN TF32; unchanged tolerances"
+  },
+  "intermediate_smoke": {
+    "job": "27612294",
+    "status": "training_completed_all_policies",
+    "dependent_full_jobs": "cancelled before execution",
+    "artifact_issue": "frozen-adaptation completion overwrote extraction provenance",
+    "fix": "separate adaptation policy directories and final artifact/parameter audit"
+  },
+  "gpu_verification": {
+    "status": "real_pretrained_gpu_verified",
+    "embedding_shape": [
+      2,
+      512
+    ],
+    "batch_singleton_invariant": true,
+    "state_reload_invariant": true,
+    "loading_info": {
+      "missing_keys": [],
+      "unexpected_keys": [],
+      "mismatched_keys": [],
+      "error_msgs": []
+    },
+    "pooling": "512D pretrained linear pooler",
+    "revision": "f791cd42437c3e268c8ac84707e3508900f65f1a",
+    "test_labels_read": false,
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "torch": "2.15.0+cu132"
+  },
+  "jobs": {
+    "smoke_job": "27612307",
+    "frozen_job": "27612308",
+    "warmup_job": "27612309",
+    "frozen_branch_job": "27612310",
+    "last2_job": "27612311",
+    "full_job": "27612312",
+    "downstream_job": "27612313"
+  },
+  "test_labels_read": false,
+  "tests": {
+    "hear_protocol": 21,
+    "controlled_adaptation": 5
+  },
+  "smoke_stages": {
+    "frozen_extraction": {
+      "status": "complete",
+      "encoder_unchanged": true
+    },
+    "warmup": {
+      "status": "complete",
+      "backbone_changed": false,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true
+    },
+    "frozen": {
+      "status": "complete",
+      "backbone_changed": false,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true
+    },
+    "last2": {
+      "status": "complete",
+      "backbone_changed": true,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true
+    },
+    "full": {
+      "status": "complete",
+      "backbone_changed": true,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true
+    }
+  },
+  "final_smoke_audit": {
+    "status": "real_pretrained_smoke_passed",
+    "test_labels_read": false,
+    "frozen_feature_provenance_preserved": true,
+    "branch_initialization_matched": true,
+    "all_parameter_change_audits_passed": true,
+    "policies": [
+      "frozen",
+      "last2",
+      "full"
+    ],
+    "train_participants": 8,
+    "validation_participants": 8
+  },
+  "smoke_job_status": "COMPLETED",
+  "smoke_elapsed_seconds": 255,
+  "job_states_at_inspection": {
+    "27612307": "COMPLETED",
+    "27612308": "RUNNING",
+    "27612309": "PENDING_DEPENDENCY",
+    "27612310": "PENDING_DEPENDENCY",
+    "27612311": "PENDING_DEPENDENCY",
+    "27612312": "PENDING_DEPENDENCY",
+    "27612313": "PENDING_DEPENDENCY"
+  }
+}

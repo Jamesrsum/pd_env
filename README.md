@@ -104,7 +104,8 @@ download and adapter unit checks passed. These are execution checks; no full-
 cohort pretrained experiment or validated predictive performance is claimed.
 See the [local benchmark guide](docs/LOCAL_PRETRAINED_BENCHMARK.md) and
 [aggregate validation summary](docs/results/pretrained_integration_summary.json).
-HeAR remains excluded pending access.
+HeAR PyTorch is now downloaded and hash-verified. Its dedicated frozen and
+controlled fine-tuning jobs use the [HeAR protocol](docs/HEAR_AND_REPRESENTATION_NEXT_STEPS.md).
 
 Full acoustic preprocessing completed: 64,973/65,022 recordings succeeded.
 The remaining 49 files match their malformed/empty Synapse source objects;

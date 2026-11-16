@@ -75,6 +75,17 @@ def test_controlled_rejects_final_test(experiment,tmp_path):
     with pytest.raises(ValueError,match='sealed'):run_stage(f,Tiny(),'frozen',c,tmp_path/'bad','cpu','warmup')
 
 
+def test_controlled_uses_canonical_initial_visits_independent_of_order(experiment,tmp_path):
+    f,c=experiment;f['initial_recording']=f.recording_id.str.endswith('-0')
+    expected=set(f.loc[f.split.eq('val') & f.initial_recording,'recording_id'])
+    f=f.iloc[::-1]
+    run_stage(f,Tiny(),'frozen',c,tmp_path/'initial','cpu','warmup',max_epochs=1)
+    actual=pd.read_csv(tmp_path/'initial/validation_predictions.csv')
+    assert set(actual.recording_id)==expected
+    f['initial_recording']=True
+    with pytest.raises(ValueError,match='canonical'):run_stage(f,Tiny(),'frozen',c,tmp_path/'duplicated','cpu','warmup')
+
+
 def test_ast_native_batch_matches_singleton_gradients(tmp_path,monkeypatch):
     import transformers
     from src.training.controlled_adaptation import ControlledAdapter

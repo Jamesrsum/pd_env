@@ -14,7 +14,7 @@ effective_batch_size: 32
 microbatch_size: 1
 max_grad_norm: 1.0
 policies: [frozen, last2, full]
-# Fill only after inspecting the authorized checkpoint's actual module tree.
-block_path: null
+# Verified against the pinned, fully loaded 24-block ViT checkpoint.
+block_path: encoder.layer
 final_test: sealed
 interpretation: proposed_controlled_HeAR_experiment_not_paper_replication
