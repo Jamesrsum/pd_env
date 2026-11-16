@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/Google-Health/hear",
+  "revision": "3cba3ba843350a9166227cf56e2a4a58399640d3",
+  "license": "Apache-2.0",
+  "files": {
+    "audio_utils.py": {
+      "source": "python/data_processing/audio_utils.py",
+      "sha256": "1f2dcc0406e86d1162c97c91782e8488f290b9f41006d7f5fd5035bbf4c88957"
+    },
+    "LICENSE": {
+      "source": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    }
+  }
+}

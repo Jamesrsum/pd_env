@@ -1,0 +1,20 @@
+seed: 20261112
+model: hear_pytorch
+head_kind: layernorm_linear
+optimizer: adamw
+weight_decay: 0.01
+warmup_epochs: 10
+adaptation_epochs: 20
+warmup_head_lr: 0.0001
+adapt_head_lr: 0.0001
+head_min_lr: 0.00001
+backbone_lr: 0.000005
+backbone_min_lr: 0.000001
+effective_batch_size: 32
+microbatch_size: 1
+max_grad_norm: 1.0
+policies: [frozen, last2, full]
+# Fill only after inspecting the authorized checkpoint's actual module tree.
+block_path: null
+final_test: sealed
+interpretation: proposed_controlled_HeAR_experiment_not_paper_replication

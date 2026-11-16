@@ -9,6 +9,19 @@ from sklearn.model_selection import StratifiedGroupKFold
 from src.data.frozen_protocol import participant_weights,development_frame
 
 
+def operating_point(labels, probabilities, specificity_target=.9):
+    """Development-selected threshold; apply float64 to preserve nextafter ties."""
+    labels=np.asarray(labels);probabilities=np.asarray(probabilities,dtype=np.float64)
+    if not 0<specificity_target<1 or not np.isfinite(probabilities).all():raise ValueError('Invalid operating point input')
+    controls=probabilities[labels==0]
+    if not len(controls) or not np.any(labels==1):raise ValueError('Both classes required')
+    threshold=float(np.nextafter(np.quantile(controls,specificity_target,method='higher'),np.inf))
+    pred=probabilities>=threshold
+    return {'threshold':threshold,'specificity':float((~pred[labels==0]).mean()),
+            'sensitivity':float(pred[labels==1].mean()),'controls':int(len(controls)),
+            'threshold_selection':'validation; exploratory, not a locked test operating point'}
+
+
 def initial_predictions(frame,p):
     d=frame[[c for c in ['participant_id','recording_id','label','initial_recording','duplicate_component'] if c in frame]].copy();d['probability']=p
     d=d[d.initial_recording]
@@ -70,9 +83,8 @@ def fit_development(x,frame,options,seed):
     results['mlp']={'state':{'scaler':scaler,'state_dict':best,'input_dim':z.shape[1],'hidden_dim':options['hidden_dim']},
                     'probabilities':best_p,'metrics':score(va,best_p),'search':logs}
     for result in results.values():
-        d=initial_predictions(va,result['probabilities']);controls=d.loc[d.label.eq(0),'probability']
-        threshold=float(np.nextafter(np.quantile(controls,options['specificity_target'],method='higher'),np.inf))
-        result['threshold']=threshold;pred=d.probability.ge(threshold)
-        result['metrics'].update(threshold=threshold,specificity=float((~pred[d.label.eq(0)]).mean()),sensitivity=float(pred[d.label.eq(1)].mean()))
+        d=initial_predictions(va,result['probabilities'])
+        point=operating_point(d.label,d.probability,options['specificity_target'])
+        result['threshold']=point['threshold'];result['metrics'].update(point)
         result['initial_validation_predictions']=d
     return results

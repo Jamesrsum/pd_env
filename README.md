@@ -128,3 +128,9 @@ The [controlled AST audit](docs/CONTROLLED_AST_REVIEW.md) explains the paper
 comparison and fixes the classifier-LR/warm-up confounds in the first adaptation
 batch. New paired branches use one best warm-up checkpoint, independent head
 and backbone schedules, phase-labelled metrics and production weight audits.
+
+The [HeAR and representation-learning protocol](docs/HEAR_AND_REPRESENTATION_NEXT_STEPS.md)
+specifies gated-model readiness, frozen and controlled adaptation jobs, precise
+diagnosis contrastive/acoustic auxiliary objectives, and development-only
+classifier/fusion comparisons. The CPU panel is submitted; HeAR execution
+requires authorized model access. The final test remains sealed.

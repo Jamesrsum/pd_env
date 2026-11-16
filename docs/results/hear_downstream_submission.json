@@ -1,0 +1,39 @@
+{
+  "status_date_local": "2026-11-15",
+  "timezone": "America/New_York",
+  "hear": {
+    "status": "blocked_model_access",
+    "repository": "google/hear-pytorch",
+    "revision": "f791cd42437c3e268c8ac84707e3508900f65f1a",
+    "download_failure": "HTTP 403 using configured credentials",
+    "user_supplied_credential_check": "valid HTTP 200; model returns HTTP 403 GatedRepo, account not authorized",
+    "readiness_failure": "config.json missing",
+    "training_submitted": false,
+    "preprocessing_pinned": true,
+    "real_architecture_and_gpu_inference_verified": false
+  },
+  "downstream_panel": {
+    "private_root_relative_to_benchmark_root": "downstream_panel/20261116T004453Z",
+    "smoke_job": "27612238",
+    "smoke_status": "COMPLETED",
+    "smoke_elapsed_seconds": 18,
+    "full_job": "27612239",
+    "full_status_at_inspection": "RUNNING",
+    "sources": ["whisper_small", "wavlm_large"],
+    "cohort": "canonical initial development recordings only",
+    "selection": "participant/component-disjoint training CV",
+    "calibration_and_stacking_fit": "training OOF predictions only"
+  },
+  "learning_objectives": {
+    "components_implemented_and_synthetically_tested": ["BCE", "diagnosis SupCon", "grouped masked Huber", "observed-only target scaling"],
+    "production_encoder_training_integration": "pending baseline selection and real GPU batch resource test",
+    "contrastive_training_submitted": false
+  },
+  "corrected_ast": {
+    "warmup_job": "27612213",
+    "branch_array_job": "27612214",
+    "status_at_inspection": "warmup running; branches dependency pending"
+  },
+  "test_labels_read": false,
+  "specificity_float32_tie_bug_fixed": true
+}
