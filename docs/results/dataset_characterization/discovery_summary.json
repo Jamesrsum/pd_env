@@ -1,0 +1,85 @@
+{
+  "files": 131091,
+  "total_bytes": 87251529380,
+  "file_types": {
+    "": 65545,
+    ".tmp": 65022,
+    ".csv": 524
+  },
+  "metadata_tables": 524,
+  "recordings": 65022,
+  "participants": 5826,
+  "missing_audio": 0,
+  "duplicate_recording_ids": 0,
+  "recording_diagnoses": {
+    "pd": 39388,
+    "control": 22782,
+    "unknown": 2174,
+    "conflicting": 678
+  },
+  "participant_diagnoses": {
+    "control": 3890,
+    "pd": 970,
+    "unknown": 864,
+    "conflicting": 102
+  },
+  "recordings_per_participant": {
+    "n": 5826,
+    "missing": 0,
+    "mean": 11.16065911431514,
+    "sd": 39.2635326947092,
+    "min": 1.0,
+    "max": 522.0,
+    "q1": 1.0,
+    "q5": 1.0,
+    "q25": 1.0,
+    "q50": 3.0,
+    "q75": 6.0,
+    "q95": 35.0,
+    "q99": 211.75
+  },
+  "longitudinal_participants": 4299,
+  "single_recording_participants": 1527,
+  "top_1_percent_recording_share": 0.3041893512964843,
+  "followup_days": {
+    "n": 5826,
+    "missing": 0,
+    "mean": 9.35637361174683,
+    "sd": 26.17480606760536,
+    "min": 0.0,
+    "max": 183.92024305555555,
+    "q1": 0.0,
+    "q5": 0.0,
+    "q25": 0.0,
+    "q50": 0.002170138888888889,
+    "q75": 3.6393750000000002,
+    "q95": 58.426440972222224,
+    "q99": 152.05791956018518
+  },
+  "relationships": {
+    "voice_to_participant": "many-to-one, healthCode grouping; no external demographic or clinical join performed",
+    "shards": "audited against consolidated source, never concatenated",
+    "countdown": "handles inventoried; no local countdown mapping assumed; downloader retrieves only sustained phonation",
+    "demographics": "syn5511429 baseline linked by healthCode; one-to-one participants / many-to-one recordings; duplicates fail closed; no temporal clinical-survey matching"
+  },
+  "source_participant_diagnoses": {
+    "control": 3992,
+    "pd": 970,
+    "unknown": 864
+  },
+  "source_recording_diagnoses": {
+    "pd": 39388,
+    "control": 23460,
+    "unknown": 2174
+  },
+  "demographics_matched_participants": 5044,
+  "demographics_unmatched_participants": 782,
+  "demographics_matched_recordings": 63255,
+  "label_conflict_participants": 102,
+  "demographics_table": "syn5511429",
+  "diagnosis_definition": "Participant-reported professional diagnosis; not independently clinically adjudicated",
+  "historical_blockers_at_metadata_audit": [
+    "Full-audio processing, near-duplicate review and label/QC sensitivity remain pending"
+  ],
+  "current_scope_note": "Full extraction completed: 64973/65022; historical pilot/runtime notes are superseded."
+}

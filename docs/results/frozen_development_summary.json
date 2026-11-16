@@ -1,0 +1,192 @@
+{
+  "models": 9,
+  "conditions": 2,
+  "pipelines": 364,
+  "manifest_sha256": "35e5a70030b4bc116a8f11854119f80c0d70f2d059171931269e8c065988c53b",
+  "test_labels_read": false,
+  "shortlist": [
+    {
+      "model": "whisper_large_v3",
+      "context": "matched_2s",
+      "representation": "block_16/mean_sd/window_mean",
+      "head": "logistic"
+    },
+    {
+      "model": "whisper_small",
+      "context": "matched_2s",
+      "representation": "block_6/mean_sd/window_mean",
+      "head": "logistic"
+    }
+  ],
+  "status": "development-only shortlist; near-duplicate/task review required before fine-tuning/final evaluation",
+  "array_job": "27564045",
+  "summary_job": "27564046",
+  "all_18_tasks_completed": true,
+  "recordings_per_condition": 53122,
+  "development_participants": 4126,
+  "train_recordings": 43702,
+  "train_participants": 3397,
+  "validation_recordings": 9420,
+  "validation_participants": 729,
+  "validation_pd": 146,
+  "validation_controls": 583,
+  "extraction_failures": 0,
+  "all_encoders_unchanged": true,
+  "primary_pipelines": 182,
+  "sensitivity_pipelines": 182,
+  "best_primary_per_model": [
+    {
+      "model": "whisper_large_v3",
+      "context": "matched_2s",
+      "arm": "technical_primary",
+      "representation": "block_16/mean_sd/window_mean",
+      "head": "logistic",
+      "peak_gpu_gib": 2.5861196517944336,
+      "seconds_per_recording": 0.7737376534835388,
+      "auroc": 0.8950868206489815,
+      "log_loss": 0.3055850565433502,
+      "participants": 729,
+      "threshold": 0.2888533771038056,
+      "specificity": 0.8987993138936535,
+      "sensitivity": 0.7191780821917808
+    },
+    {
+      "model": "whisper_small",
+      "context": "matched_2s",
+      "arm": "technical_primary",
+      "representation": "block_6/mean_sd/window_mean",
+      "head": "logistic",
+      "peak_gpu_gib": 0.386716365814209,
+      "seconds_per_recording": 0.1593788229596301,
+      "auroc": 0.8877910665194201,
+      "log_loss": 0.3207094073295593,
+      "participants": 729,
+      "threshold": 0.314890593290329,
+      "specificity": 0.8987993138936535,
+      "sensitivity": 0.6575342465753424
+    },
+    {
+      "model": "ast_audioset",
+      "context": "full",
+      "arm": "technical_primary",
+      "representation": "patches/mean_sd/window_mean",
+      "head": "mlp",
+      "peak_gpu_gib": 0.3711862564086914,
+      "seconds_per_recording": 0.0877026602426195,
+      "auroc": 0.8867102140557814,
+      "log_loss": 0.3200812041759491,
+      "participants": 729,
+      "threshold": 0.316516786813736,
+      "specificity": 0.8987993138936535,
+      "sensitivity": 0.7054794520547946
+    },
+    {
+      "model": "whisper_medium",
+      "context": "full",
+      "arm": "technical_primary",
+      "representation": "block_12/mean_sd/window_mean",
+      "head": "mlp",
+      "peak_gpu_gib": 1.2213988304138184,
+      "seconds_per_recording": 0.0943638384545562,
+      "auroc": 0.8866514720740618,
+      "log_loss": 0.3141184449195862,
+      "participants": 729,
+      "threshold": 0.3753456175327301,
+      "specificity": 0.8987993138936535,
+      "sensitivity": 0.678082191780822
+    },
+    {
+      "model": "wavlm_large",
+      "context": "matched_2s",
+      "arm": "technical_primary",
+      "representation": "block_12/mean_sd/window_mean",
+      "head": "logistic",
+      "peak_gpu_gib": 1.227409839630127,
+      "seconds_per_recording": 0.1104334924446979,
+      "auroc": 0.8821870814633803,
+      "log_loss": 0.3232388496398926,
+      "participants": 729,
+      "threshold": 0.3027372062206269,
+      "specificity": 0.8987993138936535,
+      "sensitivity": 0.6712328767123288
+    },
+    {
+      "model": "hubert_large",
+      "context": "matched_2s",
+      "arm": "technical_primary",
+      "representation": "block_12/mean_sd/window_mean",
+      "head": "logistic",
+      "peak_gpu_gib": 1.2273354530334473,
+      "seconds_per_recording": 0.0852826015512458,
+      "auroc": 0.8815761648534975,
+      "log_loss": 0.3269256949424743,
+      "participants": 729,
+      "threshold": 0.362633764743805,
+      "specificity": 0.8987993138936535,
+      "sensitivity": 0.6301369863013698
+    },
+    {
+      "model": "wav2vec2_large_robust",
+      "context": "matched_2s",
+      "arm": "technical_primary",
+      "representation": "block_12/mean_sd/window_mean",
+      "head": "logistic",
+      "peak_gpu_gib": 1.2273354530334473,
+      "seconds_per_recording": 0.0821139183971381,
+      "auroc": 0.8773937357550694,
+      "log_loss": 0.3289820551872253,
+      "participants": 729,
+      "threshold": 0.3028910458087921,
+      "specificity": 0.8987993138936535,
+      "sensitivity": 0.684931506849315
+    },
+    {
+      "model": "wavlm_base_plus",
+      "context": "matched_2s",
+      "arm": "technical_primary",
+      "representation": "block_6/mean_sd/window_mean",
+      "head": "logistic",
+      "peak_gpu_gib": 0.3917651176452636,
+      "seconds_per_recording": 0.0596347490795,
+      "auroc": 0.8589135083061161,
+      "log_loss": 0.3551742136478424,
+      "participants": 729,
+      "threshold": 0.3519777357578278,
+      "specificity": 0.8987993138936535,
+      "sensitivity": 0.636986301369863
+    },
+    {
+      "model": "wav2vec2_base_960h",
+      "context": "matched_2s",
+      "arm": "technical_primary",
+      "representation": "block_6/mean_sd/window_mean",
+      "head": "logistic",
+      "peak_gpu_gib": 0.3917164802551269,
+      "seconds_per_recording": 0.0398376934952075,
+      "auroc": 0.8243262294696774,
+      "log_loss": 0.3817196786403656,
+      "participants": 729,
+      "threshold": 0.3022591173648835,
+      "specificity": 0.8987993138936535,
+      "sensitivity": 0.5205479452054794
+    }
+  ],
+  "covariate_baselines": {
+    "age_only": {
+      "auroc": 0.9330458892361193,
+      "log_loss": 0.262331239677317,
+      "participants": 729
+    },
+    "device_only": {
+      "auroc": 0.6367572076411571,
+      "log_loss": 0.4690389020592014,
+      "participants": 729
+    },
+    "age_device": {
+      "auroc": 0.9337390446204094,
+      "log_loss": 0.2584594271909789,
+      "participants": 729
+    }
+  },
+  "interpretation": "Validation-selected development results, not held-out test performance. Age-only baseline exceeds all audio models; confounding and model-selection optimism remain."
+}

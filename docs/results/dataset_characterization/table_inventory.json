@@ -1,0 +1,13 @@
+{
+  "canonical_tables": [
+    {
+      "table": "voice_activity/Voice_Activity.csv",
+      "rows": 65022,
+      "columns": 9,
+      "duplicate_rows": 0
+    }
+  ],
+  "total_audited_tables": 524,
+  "cached_query_and_download_shards": 523,
+  "interpretation": "Cache tables and download shards overlap the canonical export; never add their rows as observations."
+}

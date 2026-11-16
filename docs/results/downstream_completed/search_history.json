@@ -1,0 +1,792 @@
+{
+  "age_device_fusion_search": [
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.9177508911505831
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.9038183451273216
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.8962855441506985
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": null
+      },
+      "cv_auroc": 0.8923817536744211
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 32
+      },
+      "cv_auroc": 0.8377356649764344
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 32
+      },
+      "cv_auroc": 0.8375226827051252
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 32
+      },
+      "cv_auroc": 0.8375064533671237
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 32
+      },
+      "cv_auroc": 0.8375080598062364
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 128
+      },
+      "cv_auroc": 0.9184398957547236
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 128
+      },
+      "cv_auroc": 0.9177214015182974
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 128
+      },
+      "cv_auroc": 0.9174690758319296
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 128
+      },
+      "cv_auroc": 0.9174186522899546
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.8833990051379947
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.8717393122816945
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.8702249924117266
+    }
+  ],
+  "age_device_search": [
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.9234562708197019
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.924895912785732
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.9264125777699407
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": null
+      },
+      "cv_auroc": 0.9266526830444856
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.9242693011292781
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.9257487311497637
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.9258039883522837
+    }
+  ],
+  "age_device_whisper_search": [
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.9223493589691181
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.9007578634692561
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.8846084744998876
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": null
+      },
+      "cv_auroc": 0.8800402851899882
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 32
+      },
+      "cv_auroc": 0.8508871086674877
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 32
+      },
+      "cv_auroc": 0.8510088107734921
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 32
+      },
+      "cv_auroc": 0.8510040775153919
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 32
+      },
+      "cv_auroc": 0.8510057126409173
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 128
+      },
+      "cv_auroc": 0.9242864376750822
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 128
+      },
+      "cv_auroc": 0.9194488040620191
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 128
+      },
+      "cv_auroc": 0.9180306410475199
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 128
+      },
+      "cv_auroc": 0.9178274408429514
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.8893682173307873
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.8648881937023628
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.8611267810640646
+    }
+  ],
+  "early_fusion_search": [
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.8735704090358299
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.8532142078409203
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.8436573401975328
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": null
+      },
+      "cv_auroc": 0.8416967960059564
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 32
+      },
+      "cv_auroc": 0.8248347540709534
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 32
+      },
+      "cv_auroc": 0.824704790278083
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 32
+      },
+      "cv_auroc": 0.8246950655841676
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 32
+      },
+      "cv_auroc": 0.8246982712907901
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 128
+      },
+      "cv_auroc": 0.8796745621141014
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 128
+      },
+      "cv_auroc": 0.8786454119568239
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 128
+      },
+      "cv_auroc": 0.8785468848865032
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 128
+      },
+      "cv_auroc": 0.8785160183064065
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.820512923673574
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.8056545451942815
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.8039029169750097
+    }
+  ],
+  "hear_search": [
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.8534937569329681
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.8466598788876866
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.8213169034199339
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": null
+      },
+      "cv_auroc": 0.79141738532585
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 32
+      },
+      "cv_auroc": 0.8018935915385869
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 32
+      },
+      "cv_auroc": 0.8017617129276667
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 32
+      },
+      "cv_auroc": 0.8016855505018702
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 32
+      },
+      "cv_auroc": 0.8016888064097151
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 128
+      },
+      "cv_auroc": 0.850378821291939
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 128
+      },
+      "cv_auroc": 0.8485506362086959
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 128
+      },
+      "cv_auroc": 0.8458795654318285
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 128
+      },
+      "cv_auroc": 0.8454700310321007
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.844273628331206
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.8175264529603504
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.7885310373646549
+    }
+  ],
+  "wavlm_large_search": [
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.8634188612991577
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.8342058305764972
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.8110822045301639
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": null
+      },
+      "cv_auroc": 0.8051593782667549
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 32
+      },
+      "cv_auroc": 0.8245973883488241
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 32
+      },
+      "cv_auroc": 0.8241824824183128
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 32
+      },
+      "cv_auroc": 0.8240750661458476
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 32
+      },
+      "cv_auroc": 0.8240766654133572
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 128
+      },
+      "cv_auroc": 0.8660705687474328
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 128
+      },
+      "cv_auroc": 0.8632949001381508
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 128
+      },
+      "cv_auroc": 0.862602653969372
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 128
+      },
+      "cv_auroc": 0.8625294964453087
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.8177352900450203
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.7852981647092924
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.7794727359887026
+    }
+  ],
+  "whisper_small_search": [
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.8564099674498143
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.8313529094577353
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.8107517191265137
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": null
+      },
+      "cv_auroc": 0.804638594372661
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 32
+      },
+      "cv_auroc": 0.8108589561088992
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 32
+      },
+      "cv_auroc": 0.8108429562621994
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 32
+      },
+      "cv_auroc": 0.810820093191254
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 32
+      },
+      "cv_auroc": 0.8108152165010901
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.01,
+        "pca": 128
+      },
+      "cv_auroc": 0.8475661974114587
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 0.1,
+        "pca": 128
+      },
+      "cv_auroc": 0.8451858921140163
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 1,
+        "pca": 128
+      },
+      "cv_auroc": 0.844696186362313
+    },
+    {
+      "spec": {
+        "kind": "lr",
+        "C": 10,
+        "pca": 128
+      },
+      "cv_auroc": 0.8446391936318229
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.01,
+        "pca": null
+      },
+      "cv_auroc": 0.8192949631335132
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 0.1,
+        "pca": null
+      },
+      "cv_auroc": 0.790282084684069
+    },
+    {
+      "spec": {
+        "kind": "svm",
+        "C": 1,
+        "pca": null
+      },
+      "cv_auroc": 0.7841096579435014
+    }
+  ]
+}

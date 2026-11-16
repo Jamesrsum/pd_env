@@ -13,7 +13,7 @@ projects/
     scripts/                        download, EDA/QC, runners and Slurm wrappers
     src/{data,models,training,evaluation}/
     tests/                          synthetic tests and opt-in real integration tests
-    notebooks/                      unexecuted characterization notebook
+    notebooks/                      executed aggregate reports and private-analysis source
     docs/                           methods, aggregate status, plans and handoff
     requirements-*.txt
   pd_data/                          private HPC storage; not in Git
@@ -98,7 +98,7 @@ future methodology; it has not been fitted or wired into current model training.
 
 ## Git, cloud work, and transfers
 
-Publish source code, synthetic fixtures, an output-free notebook, documentation,
+Publish source code, synthetic fixtures, reviewed aggregate-only notebooks, documentation,
 and selected aggregate status summaries. Keep recordings, source exports,
 participant-level manifests/predictions, embeddings, raw logs, credentials and
 model checkpoints outside Git, even for a private repository. `.gitignore`

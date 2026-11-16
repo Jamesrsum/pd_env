@@ -11,7 +11,7 @@ fi
 TEMPLATE="$1"
 shift
 case "$TEMPLATE" in
-    download_mpower|download_mpower_demographics|download_pretrained_models|preprocess_mpower|linked_pilot_mpower|full_mpower|frozen_benchmark) ;;
+    download_mpower|download_mpower_demographics|download_pretrained_models|preprocess_mpower|linked_pilot_mpower|full_mpower|frozen_benchmark|adaptation_setup|adaptation_train|adaptation_smoke|adaptation_contrastive|adaptation_summary) ;;
     *) echo "Unknown Slurm template: $TEMPLATE" >&2; exit 2 ;;
 esac
 # Resolve symlinks before validating; never create job outputs inside the checkout.
@@ -24,6 +24,13 @@ SNAPSHOT="$(mktemp "$JOB_ROOT/jobs/${TEMPLATE}_XXXXXXXX.slurm")"
 cp -- "$REPO_ROOT/scripts/$TEMPLATE.slurm" "$SNAPSHOT"
 # Scheduler options may be supplied through Slurm's standard SBATCH_*
 # environment variables.
-sbatch --parsable --chdir="$REPO_ROOT" \
+SCHEDULER_ARGS=()
+if [[ -n "${MPOWER_SBATCH_DEPENDENCY:-}" ]]; then
+    SCHEDULER_ARGS+=("--dependency=$MPOWER_SBATCH_DEPENDENCY")
+fi
+if [[ -n "${MPOWER_SBATCH_ARRAY:-}" ]]; then
+    SCHEDULER_ARGS+=("--array=$MPOWER_SBATCH_ARRAY")
+fi
+sbatch --parsable "${SCHEDULER_ARGS[@]}" --chdir="$REPO_ROOT" \
     --output="$JOB_ROOT/logs/%x_%j.out" \
     --error="$JOB_ROOT/logs/%x_%j.err" "$SNAPSHOT" "$@"

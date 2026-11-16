@@ -1,0 +1,160 @@
+{
+  "whisper_large_v3": {
+    "chunk_length": 30,
+    "feature_extractor_type": "WhisperFeatureExtractor",
+    "feature_size": 128,
+    "hop_length": 160,
+    "n_fft": 400,
+    "n_samples": 480000,
+    "nb_max_frames": 3000,
+    "padding_side": "right",
+    "padding_value": 0.0,
+    "processor_class": "WhisperProcessor",
+    "return_attention_mask": false,
+    "sampling_rate": 16000,
+    "preprocessor_config_sha256": "7ccc62c6f2765af1f3b46c00c9b5894426835a05021c8b9c01eecb6dfb542711"
+  },
+  "whisper_small": {
+    "chunk_length": 30,
+    "feature_extractor_type": "WhisperFeatureExtractor",
+    "feature_size": 80,
+    "hop_length": 160,
+    "mel_filters": {
+      "shape": [
+        80,
+        201
+      ],
+      "canonical_json_sha256": "caf5779874f82b52482dfa6e753a45d35181e78bb2bbbccdfd0c226c2a6410c1",
+      "note": "Native checkpoint matrix retained in original asset; report summarizes rather than prints every constant."
+    },
+    "n_fft": 400,
+    "n_samples": 480000,
+    "nb_max_frames": 3000,
+    "padding_side": "right",
+    "padding_value": 0.0,
+    "processor_class": "WhisperProcessor",
+    "return_attention_mask": false,
+    "sampling_rate": 16000,
+    "preprocessor_config_sha256": "9b5cd03a36fbb8a627c64d98a5b5b126ead95a77720723944487311f0110b666"
+  },
+  "ast_audioset": {
+    "do_normalize": true,
+    "feature_extractor_type": "ASTFeatureExtractor",
+    "feature_size": 1,
+    "max_length": 1024,
+    "mean": -4.2677393,
+    "num_mel_bins": 128,
+    "padding_side": "right",
+    "padding_value": 0.0,
+    "return_attention_mask": false,
+    "sampling_rate": 16000,
+    "std": 4.5689974,
+    "preprocessor_config_sha256": "8d04ba5a9c6fca5d39d0de2b1fd05ecf79deb589fbba279728bbebac39934231"
+  },
+  "whisper_medium": {
+    "chunk_length": 30,
+    "feature_extractor_type": "WhisperFeatureExtractor",
+    "feature_size": 80,
+    "hop_length": 160,
+    "mel_filters": {
+      "shape": [
+        80,
+        201
+      ],
+      "canonical_json_sha256": "caf5779874f82b52482dfa6e753a45d35181e78bb2bbbccdfd0c226c2a6410c1",
+      "note": "Native checkpoint matrix retained in original asset; report summarizes rather than prints every constant."
+    },
+    "n_fft": 400,
+    "n_samples": 480000,
+    "nb_max_frames": 3000,
+    "padding_side": "right",
+    "padding_value": 0.0,
+    "processor_class": "WhisperProcessor",
+    "return_attention_mask": false,
+    "sampling_rate": 16000,
+    "preprocessor_config_sha256": "9b5cd03a36fbb8a627c64d98a5b5b126ead95a77720723944487311f0110b666"
+  },
+  "wavlm_large": {
+    "do_normalize": true,
+    "feature_extractor_type": "Wav2Vec2FeatureExtractor",
+    "feature_size": 1,
+    "padding_side": "right",
+    "padding_value": 0.0,
+    "return_attention_mask": true,
+    "sampling_rate": 16000,
+    "preprocessor_config_sha256": "60ca5a31e13f69ee2fbf147504c8676db5f6398fd7a6b12294341dff838edfcf"
+  },
+  "hubert_large": {
+    "do_normalize": true,
+    "feature_extractor_type": "Wav2Vec2FeatureExtractor",
+    "feature_size": 1,
+    "padding_side": "right",
+    "padding_value": 0,
+    "return_attention_mask": true,
+    "sampling_rate": 16000,
+    "preprocessor_config_sha256": "a2254a5b58f72cd4de3632f8eee64f3f098b7c1402128d2f419e7d00ae13e335"
+  },
+  "wav2vec2_large_robust": {
+    "do_normalize": true,
+    "feature_size": 1,
+    "padding_side": "right",
+    "padding_value": 0.0,
+    "return_attention_mask": true,
+    "sampling_rate": 16000,
+    "preprocessor_config_sha256": "c403ce09975b90dff0dd8302c42d422e9de1f166cd7772df23490069893cb0cf"
+  },
+  "wavlm_base_plus": {
+    "do_normalize": false,
+    "feature_extractor_type": "Wav2Vec2FeatureExtractor",
+    "feature_size": 1,
+    "padding_side": "right",
+    "padding_value": 0.0,
+    "return_attention_mask": true,
+    "sampling_rate": 16000,
+    "preprocessor_config_sha256": "99272fe8ccfab114b68b478681ea47ee3a1ce62bb788cb92dd6e4f69fb1f1da2"
+  },
+  "wav2vec2_base_960h": {
+    "do_normalize": true,
+    "feature_size": 1,
+    "padding_side": "right",
+    "padding_value": 0.0,
+    "return_attention_mask": false,
+    "sampling_rate": 16000,
+    "preprocessor_config_sha256": "b225d617c025463b9e157e06afea8b90dc7078fc70b013c533328423e0486b4a"
+  },
+  "hubert_base_ls960": {
+    "do_normalize": true,
+    "feature_extractor_type": "Wav2Vec2FeatureExtractor",
+    "feature_size": 1,
+    "padding_side": "right",
+    "padding_value": 0,
+    "return_attention_mask": false,
+    "sampling_rate": 16000,
+    "preprocessor_config_sha256": "4a93853b74278b7c769d07f5a861e5d12ceb5db2bced5620d335f87238cb9e86"
+  },
+  "hear_pytorch": {
+    "source": "src/models/hear_vendor/audio_utils.py; pinned source revision in provenance appendix",
+    "sample_rate": 16000,
+    "real_samples_per_window": 32000,
+    "waveform_normalization": "minmax to [-1,1] independently per cloned window; epsilon1e-8",
+    "frame_length": 400,
+    "fft_length": 400,
+    "frame_step": 160,
+    "window": "periodic Hann",
+    "pad_end": true,
+    "spectral_power": 2,
+    "mel_bins": 128,
+    "mel_scale": "HTK",
+    "mel_min_hz": 0,
+    "mel_max_hz": 8000,
+    "PCEN": {
+      "alpha": 0.8,
+      "smooth_coef": 0.04,
+      "delta": 2.0,
+      "root": 2.0,
+      "floor": 1e-08
+    },
+    "resize": "TF-compatible bilinear to [1,192,128]; no antialias",
+    "recording_pool": "equal-window mean512D or mean+populationSD1024D"
+  }
+}

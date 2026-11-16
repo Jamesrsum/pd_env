@@ -1,0 +1,226 @@
+{
+  "status": "all_five_production_arms_verified_complete",
+  "manifest_sha256": "35e5a70030b4bc116a8f11854119f80c0d70f2d059171931269e8c065988c53b",
+  "validation_participants": 729,
+  "validation_pd": 146,
+  "test_labels_read": false,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261116,
+  "paired_comparisons": {
+    "hear_lp_full_minus_hear_lp_frozen": {
+      "auroc_delta": 0.021934255974059513,
+      "paired_component_bootstrap_95pct": [
+        0.009885013795273396,
+        0.03469516805293066
+      ]
+    },
+    "hear_lp_lora_minus_hear_lp_frozen": {
+      "auroc_delta": 0.018691698583143346,
+      "paired_component_bootstrap_95pct": [
+        0.008605872053988902,
+        0.029680445284747285
+      ]
+    },
+    "hear_lp_full_minus_hear_lp_lora": {
+      "auroc_delta": 0.0032425573909161676,
+      "paired_component_bootstrap_95pct": [
+        -0.005159974258350436,
+        0.011093039284705095
+      ]
+    },
+    "hubert_detached_supcon_minus_hubert_ce": {
+      "auroc_delta": -0.0076482060198783675,
+      "paired_component_bootstrap_95pct": [
+        -0.034410128838170344,
+        0.02090511470545643
+      ]
+    }
+  },
+  "training_audits": {
+    "hear_lp_frozen": {
+      "status": "complete",
+      "method": "hear_lp_frozen",
+      "family": "hear_lpft",
+      "policy": "frozen",
+      "objective": "bce",
+      "selected_epoch": 18,
+      "selected_stage": "adaptation",
+      "validation_metrics": {
+        "epoch": 18,
+        "selected_stage": "adaptation",
+        "auroc": 0.8721069574003149,
+        "auprc": 0.6887662038237261,
+        "log_loss": 0.331795666002556,
+        "participants": 729
+      },
+      "initial_validation_metrics": {
+        "auroc": 0.8699804976620691,
+        "auprc": 0.68578746214767,
+        "log_loss": 0.3336195564990903,
+        "participants": 729
+      },
+      "initial_base_sha256": "242905de506698d83e033d0f85cfdc73cc6d2f2cffa0765340674623c0344c66",
+      "initial_head_sha256": "8c28383d85902b241886032e940e04c066dd6d86d8e3f0061185d63c27fa3379",
+      "pretrained_weights_changed": false,
+      "trainable_backbone_or_adapter_changed": false,
+      "frozen_parameters_unchanged": true,
+      "head_changed": true,
+      "projector_changed": false,
+      "trainable_backbone_parameters": 0,
+      "test_labels_read": false,
+      "training_pd_prior": 0.19988224904327348,
+      "train_participants": 3397,
+      "validation_participants": 729,
+      "interpretation": "strong_converged_LP_head_only_control"
+    },
+    "hear_lp_full": {
+      "status": "complete",
+      "method": "hear_lp_full",
+      "family": "hear_lpft",
+      "policy": "full",
+      "objective": "bce",
+      "selected_epoch": 13,
+      "selected_stage": "adaptation",
+      "validation_metrics": {
+        "epoch": 13,
+        "selected_stage": "adaptation",
+        "auroc": 0.8940412133743744,
+        "auprc": 0.7448673780605315,
+        "log_loss": 0.31236844516734924,
+        "participants": 729
+      },
+      "initial_validation_metrics": {
+        "auroc": 0.8699804976620691,
+        "auprc": 0.68578746214767,
+        "log_loss": 0.3336195564990903,
+        "participants": 729
+      },
+      "initial_base_sha256": "242905de506698d83e033d0f85cfdc73cc6d2f2cffa0765340674623c0344c66",
+      "initial_head_sha256": "8c28383d85902b241886032e940e04c066dd6d86d8e3f0061185d63c27fa3379",
+      "pretrained_weights_changed": true,
+      "trainable_backbone_or_adapter_changed": true,
+      "frozen_parameters_unchanged": true,
+      "head_changed": true,
+      "projector_changed": false,
+      "trainable_backbone_parameters": 303199744,
+      "test_labels_read": false,
+      "training_pd_prior": 0.19988224904327348,
+      "train_participants": 3397,
+      "validation_participants": 729,
+      "interpretation": "LP_FT_method_adapted_from_Kumar_ICLR2022_not_original_dataset_replication"
+    },
+    "hear_lp_lora": {
+      "status": "complete",
+      "method": "hear_lp_lora",
+      "family": "hear_lpft",
+      "policy": "lora",
+      "objective": "bce",
+      "selected_epoch": 18,
+      "selected_stage": "adaptation",
+      "validation_metrics": {
+        "epoch": 18,
+        "selected_stage": "adaptation",
+        "auroc": 0.8907986559834582,
+        "auprc": 0.7350524332039315,
+        "log_loss": 0.31022032938925453,
+        "participants": 729
+      },
+      "initial_validation_metrics": {
+        "auroc": 0.8699804976620691,
+        "auprc": 0.68578746214767,
+        "log_loss": 0.3336195564990903,
+        "participants": 729
+      },
+      "initial_base_sha256": "242905de506698d83e033d0f85cfdc73cc6d2f2cffa0765340674623c0344c66",
+      "initial_head_sha256": "8c28383d85902b241886032e940e04c066dd6d86d8e3f0061185d63c27fa3379",
+      "pretrained_weights_changed": false,
+      "trainable_backbone_or_adapter_changed": true,
+      "frozen_parameters_unchanged": true,
+      "head_changed": true,
+      "projector_changed": false,
+      "trainable_backbone_parameters": 786432,
+      "test_labels_read": false,
+      "training_pd_prior": 0.19988224904327348,
+      "train_participants": 3397,
+      "validation_participants": 729,
+      "interpretation": "QV_LoRA_from_converged_LP_original_LoRA_math_with_project_HeAR_hyperparameters"
+    },
+    "hubert_ce": {
+      "status": "complete",
+      "method": "hubert_ce",
+      "family": "hubert_supcon",
+      "policy": "full",
+      "objective": "ce",
+      "selected_epoch": 33,
+      "selected_stage": "adaptation",
+      "validation_metrics": {
+        "epoch": 33,
+        "selected_stage": "adaptation",
+        "auroc": 0.8603585610564158,
+        "auprc": 0.6681172916434585,
+        "log_loss": 0.41728562590852,
+        "participants": 729
+      },
+      "initial_validation_metrics": {
+        "auroc": 0.3932423224229893,
+        "auprc": 0.16483836272937086,
+        "log_loss": 0.6585013977225711,
+        "participants": 729
+      },
+      "initial_base_sha256": "c73e3704cd71b8f81649869cddf910f713ef37ee54dd4b9aa018dd75a8e60740",
+      "initial_head_sha256": "d2a5eb5afe36266be841cbb5cd9ec1c4cccb78956db282338c2003480c650559",
+      "pretrained_weights_changed": true,
+      "trainable_backbone_or_adapter_changed": true,
+      "frozen_parameters_unchanged": true,
+      "head_changed": true,
+      "projector_changed": false,
+      "trainable_backbone_parameters": 90170496,
+      "test_labels_read": false,
+      "training_pd_prior": 0.19988224904327348,
+      "train_participants": 3397,
+      "validation_participants": 729,
+      "interpretation": "NeuroVoz_paper_mechanism_control_adapted_to_mPower_vowels_frozen_CNN_no_unspecified_filtering"
+    },
+    "hubert_detached_supcon": {
+      "status": "complete",
+      "method": "hubert_detached_supcon",
+      "family": "hubert_supcon",
+      "policy": "full",
+      "objective": "detached_supcon",
+      "selected_epoch": 37,
+      "selected_stage": "adaptation",
+      "validation_metrics": {
+        "epoch": 37,
+        "selected_stage": "adaptation",
+        "auroc": 0.8527103550365375,
+        "auprc": 0.6470902030891951,
+        "log_loss": 0.4104623403974814,
+        "participants": 729
+      },
+      "initial_validation_metrics": {
+        "auroc": 0.3932423224229893,
+        "auprc": 0.16483836272937086,
+        "log_loss": 0.6585013977225711,
+        "participants": 729
+      },
+      "initial_base_sha256": "c73e3704cd71b8f81649869cddf910f713ef37ee54dd4b9aa018dd75a8e60740",
+      "initial_head_sha256": "d2a5eb5afe36266be841cbb5cd9ec1c4cccb78956db282338c2003480c650559",
+      "pretrained_weights_changed": true,
+      "trainable_backbone_or_adapter_changed": true,
+      "frozen_parameters_unchanged": true,
+      "head_changed": true,
+      "projector_changed": true,
+      "trainable_backbone_parameters": 90170496,
+      "test_labels_read": false,
+      "training_pd_prior": 0.19988224904327348,
+      "train_participants": 3397,
+      "validation_participants": 729,
+      "interpretation": "NeuroVoz_detached_CE_encoder_SupCon_unscaled_adaptation_missing_mining_formula_not_exact_replication"
+    }
+  },
+  "limitations": [
+    "One training seed; validation-selected epochs.",
+    "Intervals condition on fitted models; no model-selection or multiplicity correction.",
+    "Repeated validation reuse; final test sealed; no clinical or exact paper-SOTA claim."
+  ]
+}

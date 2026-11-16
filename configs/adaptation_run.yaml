@@ -1,0 +1,23 @@
+seed: 20261112
+head_epochs: 10
+adaptation_epochs: 20
+effective_batch_size: 32
+partial_backbone_lr: 0.000005
+head_lr: 0.0001
+max_grad_norm: 1.0
+smoke_participants_per_cell: 4
+runs:
+- {model: ast_audioset, policy: frozen}
+- {model: ast_audioset, policy: last2}
+- {model: ast_audioset, policy: full}
+- {model: resnet50, policy: frozen}
+- {model: resnet50, policy: last3}
+- {model: resnet50, policy: full}
+- {model: wav2vec2_base_960h, policy: last2}
+- {model: wav2vec2_base_960h, policy: last4}
+- {model: wav2vec2_large_robust, policy: last2}
+- {model: wav2vec2_large_robust, policy: last4}
+- {model: wavlm_base_plus, policy: last2}
+- {model: wavlm_base_plus, policy: last4}
+- {model: wavlm_large, policy: last2}
+- {model: wavlm_large, policy: last4}

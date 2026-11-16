@@ -1,0 +1,58 @@
+# RESEARCH DESIGN ONLY. Not consumed by an existing full-training runner.
+status: supervised_implementation_submitted_contrastive_on_hold
+seed: 20261112
+inputs:
+  acoustic_root_env: MPOWER_OUTPUT_ROOT
+  benchmark_root_env: MPOWER_BENCHMARK_ROOT
+  hear_checkpoint_env: MPOWER_HEAR_CHECKPOINT
+  hear_variant: tensorflow_savedmodel
+  hear_ready: false
+  hear_windows_samples: 32000
+  sample_rate: 16000
+protocol:
+  splits: reuse_locked_participant_assignments
+  final_test: sealed
+  primary_assessment: first_eligible_recording_per_participant
+  sensitivity_assessment: all_visits_with_equal_participant_weight
+  cohort: identical_technical_primary_manifest_across_arms
+  confounding: [age_only, age_device, age_gender_matched, incremental_over_demographics]
+  seeds: [20261112, 20261113, 20261114, 20261115, 20261116]
+tougui_inspired:
+  loss: BCEWithLogitsLoss
+  optimizer: SGD
+  momentum: 0.9
+  nesterov: true
+  weight_decay: 0.01
+  effective_batch_size: 32
+  head_epochs: 10
+  head_lr: 0.001
+  adaptation_epochs: 20
+  ast_backbone_lr: 0.00001
+  resnet50_backbone_lr: 0.0001
+  cosine_min_lr: 0.000001
+  ast_arms: [frozen, last_2_blocks, full]
+  resnet50_arms: [head_only, layer4, full]
+partial_waveform:
+  models: [wav2vec2_base_960h, wav2vec2_large_robust, wavlm_base_plus, wavlm_large]
+  trainable_last_blocks: [2, 4]
+  freeze_convolutional_frontend: true
+  optimizer: AdamW
+  proposed_backbone_lr_grid: [0.000001, 0.000005, 0.00001]
+  proposed_head_lr: 0.0001
+contrastive:
+  status: held_pending_revised_design
+  reassessment: docs/CONTRASTIVE_DESIGN_REASSESSMENT.md
+  whisper: whisper_small
+  positive: same_recording_and_analysis_interval
+  negative_exclusions: [same_participant, exact_or_near_duplicate_component]
+  sample: one_recording_per_participant_per_batch
+  initial_encoder: frozen
+  projection_dim: 128
+  proposed_temperature_grid: [0.05, 0.1, 0.2]
+  objective: symmetric_recording_paired_InfoNCE
+  acoustic_transform_fit_split: train_only
+  missing_values: train_median_with_observation_mask
+  all_missing_feature: drop_using_train_only
+  invalid_pair: retain_for_audio_baseline_but_exclude_from_alignment_with_audit
+  augmentation: no_pitch_shift_or_time_stretch_in_primary_arm
+  ablations: [acoustic_only, whisper_only, concatenation, alignment_audio_only, alignment_fusion, shuffled_training_pairs]

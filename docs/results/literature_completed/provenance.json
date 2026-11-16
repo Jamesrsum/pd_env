@@ -1,0 +1,398 @@
+{
+  "hear_lp_frozen": {
+    "config": {
+      "family": "hear_lpft",
+      "policy": "frozen",
+      "objective": "bce",
+      "epochs": 20,
+      "head_lr": 0.0001,
+      "backbone_lr": 5e-06,
+      "weight_decay": 0.01,
+      "batch_size": 32,
+      "microbatch_size": 1,
+      "gradient_checkpointing": false,
+      "interpretation": "strong_converged_LP_head_only_control",
+      "method": "hear_lp_frozen",
+      "seed": 20261112,
+      "declared_deviations": [
+        "mPower_sustained_vowels_instead_of_NeuroVoz_repeated_sentences",
+        "fixed_participant_duplicate_component_development_splits_instead_of_original_dataset_split",
+        "HuBERT_CNN_frozen_in_both_speech_arms_as_project_choice",
+        "speech_first_up_to_5_real_seconds_no_padding_or_unspecified_lowpass_filter",
+        "balanced_distinct_people_and_duplicate_masks_for_SupCon",
+        "speech_CE_importance_weighted_to_training_person_prevalence",
+        "projection_single_linear32_depth_unspecified_by_paper",
+        "no_hard_negative_factor_because_mining_formula_unavailable",
+        "fixed_AdamW_LR_no_invented_scheduler",
+        "gradient_clip_norm1_project_stability_choice",
+        "LoRA_head_and_adapter_LRs_differ_from_full_backbone_LR"
+      ],
+      "manifest_sha256": "35e5a70030b4bc116a8f11854119f80c0d70f2d059171931269e8c065988c53b",
+      "lp_head_sha256": "4739400adfdf98fd1475b32e9c89fe57f32cde40a956371411a13a34cd9ff128",
+      "lp_source_signature": "b972f634221390a990b1bbc5f1eb15a39520f3b9b9746dcbd9fd6b44230d4204",
+      "model_revision": "f791cd42437c3e268c8ac84707e3508900f65f1a",
+      "converged_LP_prediction_equivalence_verified": true
+    },
+    "asset": {
+      "repo_id": "google/hear-pytorch",
+      "revision": "f791cd42437c3e268c8ac84707e3508900f65f1a",
+      "gated": "auto",
+      "files": [
+        {
+          "name": "README.md",
+          "bytes": 12423,
+          "sha256": null,
+          "git_blob": "0e816d6f46274ef526c84eed82ff650c9725178e"
+        },
+        {
+          "name": "config.json",
+          "bytes": 533,
+          "sha256": null,
+          "git_blob": "c4b37afd6b7c262c494f97f6e9b3d1984672daa7"
+        },
+        {
+          "name": "pytorch_model.bin",
+          "bytes": 1212947234,
+          "sha256": "d44d355816ee4315f67d7810da274409e9b1a6570325fc5ba9ae27555fd81723",
+          "git_blob": null
+        }
+      ]
+    },
+    "lora_targets": [],
+    "torch": "2.15.0+cu132",
+    "claim": "method_adaptation_not_original_paper_SOTA_reproduction"
+  },
+  "hear_lp_full": {
+    "config": {
+      "family": "hear_lpft",
+      "policy": "full",
+      "objective": "bce",
+      "epochs": 20,
+      "head_lr": 0.0001,
+      "backbone_lr": 5e-06,
+      "weight_decay": 0.01,
+      "batch_size": 32,
+      "microbatch_size": 1,
+      "gradient_checkpointing": true,
+      "interpretation": "LP_FT_method_adapted_from_Kumar_ICLR2022_not_original_dataset_replication",
+      "method": "hear_lp_full",
+      "seed": 20261112,
+      "declared_deviations": [
+        "mPower_sustained_vowels_instead_of_NeuroVoz_repeated_sentences",
+        "fixed_participant_duplicate_component_development_splits_instead_of_original_dataset_split",
+        "HuBERT_CNN_frozen_in_both_speech_arms_as_project_choice",
+        "speech_first_up_to_5_real_seconds_no_padding_or_unspecified_lowpass_filter",
+        "balanced_distinct_people_and_duplicate_masks_for_SupCon",
+        "speech_CE_importance_weighted_to_training_person_prevalence",
+        "projection_single_linear32_depth_unspecified_by_paper",
+        "no_hard_negative_factor_because_mining_formula_unavailable",
+        "fixed_AdamW_LR_no_invented_scheduler",
+        "gradient_clip_norm1_project_stability_choice",
+        "LoRA_head_and_adapter_LRs_differ_from_full_backbone_LR"
+      ],
+      "manifest_sha256": "35e5a70030b4bc116a8f11854119f80c0d70f2d059171931269e8c065988c53b",
+      "lp_head_sha256": "4739400adfdf98fd1475b32e9c89fe57f32cde40a956371411a13a34cd9ff128",
+      "lp_source_signature": "b972f634221390a990b1bbc5f1eb15a39520f3b9b9746dcbd9fd6b44230d4204",
+      "model_revision": "f791cd42437c3e268c8ac84707e3508900f65f1a",
+      "converged_LP_prediction_equivalence_verified": true
+    },
+    "asset": {
+      "repo_id": "google/hear-pytorch",
+      "revision": "f791cd42437c3e268c8ac84707e3508900f65f1a",
+      "gated": "auto",
+      "files": [
+        {
+          "name": "README.md",
+          "bytes": 12423,
+          "sha256": null,
+          "git_blob": "0e816d6f46274ef526c84eed82ff650c9725178e"
+        },
+        {
+          "name": "config.json",
+          "bytes": 533,
+          "sha256": null,
+          "git_blob": "c4b37afd6b7c262c494f97f6e9b3d1984672daa7"
+        },
+        {
+          "name": "pytorch_model.bin",
+          "bytes": 1212947234,
+          "sha256": "d44d355816ee4315f67d7810da274409e9b1a6570325fc5ba9ae27555fd81723",
+          "git_blob": null
+        }
+      ]
+    },
+    "lora_targets": [],
+    "torch": "2.15.0+cu132",
+    "claim": "method_adaptation_not_original_paper_SOTA_reproduction"
+  },
+  "hear_lp_lora": {
+    "config": {
+      "family": "hear_lpft",
+      "policy": "lora",
+      "objective": "bce",
+      "epochs": 20,
+      "head_lr": 0.0001,
+      "backbone_lr": 0.0001,
+      "weight_decay": 0.01,
+      "batch_size": 32,
+      "microbatch_size": 1,
+      "gradient_checkpointing": true,
+      "lora_rank": 8,
+      "lora_alpha": 16,
+      "lora_dropout": 0.0,
+      "interpretation": "QV_LoRA_from_converged_LP_original_LoRA_math_with_project_HeAR_hyperparameters",
+      "method": "hear_lp_lora",
+      "seed": 20261112,
+      "declared_deviations": [
+        "mPower_sustained_vowels_instead_of_NeuroVoz_repeated_sentences",
+        "fixed_participant_duplicate_component_development_splits_instead_of_original_dataset_split",
+        "HuBERT_CNN_frozen_in_both_speech_arms_as_project_choice",
+        "speech_first_up_to_5_real_seconds_no_padding_or_unspecified_lowpass_filter",
+        "balanced_distinct_people_and_duplicate_masks_for_SupCon",
+        "speech_CE_importance_weighted_to_training_person_prevalence",
+        "projection_single_linear32_depth_unspecified_by_paper",
+        "no_hard_negative_factor_because_mining_formula_unavailable",
+        "fixed_AdamW_LR_no_invented_scheduler",
+        "gradient_clip_norm1_project_stability_choice",
+        "LoRA_head_and_adapter_LRs_differ_from_full_backbone_LR"
+      ],
+      "manifest_sha256": "35e5a70030b4bc116a8f11854119f80c0d70f2d059171931269e8c065988c53b",
+      "lp_head_sha256": "4739400adfdf98fd1475b32e9c89fe57f32cde40a956371411a13a34cd9ff128",
+      "lp_source_signature": "b972f634221390a990b1bbc5f1eb15a39520f3b9b9746dcbd9fd6b44230d4204",
+      "model_revision": "f791cd42437c3e268c8ac84707e3508900f65f1a",
+      "converged_LP_prediction_equivalence_verified": true
+    },
+    "asset": {
+      "repo_id": "google/hear-pytorch",
+      "revision": "f791cd42437c3e268c8ac84707e3508900f65f1a",
+      "gated": "auto",
+      "files": [
+        {
+          "name": "README.md",
+          "bytes": 12423,
+          "sha256": null,
+          "git_blob": "0e816d6f46274ef526c84eed82ff650c9725178e"
+        },
+        {
+          "name": "config.json",
+          "bytes": 533,
+          "sha256": null,
+          "git_blob": "c4b37afd6b7c262c494f97f6e9b3d1984672daa7"
+        },
+        {
+          "name": "pytorch_model.bin",
+          "bytes": 1212947234,
+          "sha256": "d44d355816ee4315f67d7810da274409e9b1a6570325fc5ba9ae27555fd81723",
+          "git_blob": null
+        }
+      ]
+    },
+    "lora_targets": [
+      "encoder.layer.0.attention.attention.query",
+      "encoder.layer.0.attention.attention.value",
+      "encoder.layer.1.attention.attention.query",
+      "encoder.layer.1.attention.attention.value",
+      "encoder.layer.2.attention.attention.query",
+      "encoder.layer.2.attention.attention.value",
+      "encoder.layer.3.attention.attention.query",
+      "encoder.layer.3.attention.attention.value",
+      "encoder.layer.4.attention.attention.query",
+      "encoder.layer.4.attention.attention.value",
+      "encoder.layer.5.attention.attention.query",
+      "encoder.layer.5.attention.attention.value",
+      "encoder.layer.6.attention.attention.query",
+      "encoder.layer.6.attention.attention.value",
+      "encoder.layer.7.attention.attention.query",
+      "encoder.layer.7.attention.attention.value",
+      "encoder.layer.8.attention.attention.query",
+      "encoder.layer.8.attention.attention.value",
+      "encoder.layer.9.attention.attention.query",
+      "encoder.layer.9.attention.attention.value",
+      "encoder.layer.10.attention.attention.query",
+      "encoder.layer.10.attention.attention.value",
+      "encoder.layer.11.attention.attention.query",
+      "encoder.layer.11.attention.attention.value",
+      "encoder.layer.12.attention.attention.query",
+      "encoder.layer.12.attention.attention.value",
+      "encoder.layer.13.attention.attention.query",
+      "encoder.layer.13.attention.attention.value",
+      "encoder.layer.14.attention.attention.query",
+      "encoder.layer.14.attention.attention.value",
+      "encoder.layer.15.attention.attention.query",
+      "encoder.layer.15.attention.attention.value",
+      "encoder.layer.16.attention.attention.query",
+      "encoder.layer.16.attention.attention.value",
+      "encoder.layer.17.attention.attention.query",
+      "encoder.layer.17.attention.attention.value",
+      "encoder.layer.18.attention.attention.query",
+      "encoder.layer.18.attention.attention.value",
+      "encoder.layer.19.attention.attention.query",
+      "encoder.layer.19.attention.attention.value",
+      "encoder.layer.20.attention.attention.query",
+      "encoder.layer.20.attention.attention.value",
+      "encoder.layer.21.attention.attention.query",
+      "encoder.layer.21.attention.attention.value",
+      "encoder.layer.22.attention.attention.query",
+      "encoder.layer.22.attention.attention.value",
+      "encoder.layer.23.attention.attention.query",
+      "encoder.layer.23.attention.attention.value"
+    ],
+    "torch": "2.15.0+cu132",
+    "claim": "method_adaptation_not_original_paper_SOTA_reproduction"
+  },
+  "hubert_ce": {
+    "config": {
+      "family": "hubert_supcon",
+      "policy": "full",
+      "objective": "ce",
+      "epochs": 100,
+      "head_lr": 2e-05,
+      "backbone_lr": 2e-05,
+      "weight_decay": 0.01,
+      "batch_size": 32,
+      "microbatch_size": 1,
+      "gradient_checkpointing": true,
+      "interpretation": "NeuroVoz_paper_mechanism_control_adapted_to_mPower_vowels_frozen_CNN_no_unspecified_filtering",
+      "method": "hubert_ce",
+      "seed": 20261112,
+      "declared_deviations": [
+        "mPower_sustained_vowels_instead_of_NeuroVoz_repeated_sentences",
+        "fixed_participant_duplicate_component_development_splits_instead_of_original_dataset_split",
+        "HuBERT_CNN_frozen_in_both_speech_arms_as_project_choice",
+        "speech_first_up_to_5_real_seconds_no_padding_or_unspecified_lowpass_filter",
+        "balanced_distinct_people_and_duplicate_masks_for_SupCon",
+        "speech_CE_importance_weighted_to_training_person_prevalence",
+        "projection_single_linear32_depth_unspecified_by_paper",
+        "no_hard_negative_factor_because_mining_formula_unavailable",
+        "fixed_AdamW_LR_no_invented_scheduler",
+        "gradient_clip_norm1_project_stability_choice",
+        "LoRA_head_and_adapter_LRs_differ_from_full_backbone_LR"
+      ],
+      "manifest_sha256": "35e5a70030b4bc116a8f11854119f80c0d70f2d059171931269e8c065988c53b",
+      "model_revision": "dba3bb02fda4248b6e082697eee756de8fe8aa8a",
+      "actual_encoder_augmentation": {
+        "mask_time_prob": 0.0,
+        "mask_feature_prob": 0.0,
+        "layerdrop": 0.0
+      }
+    },
+    "asset": {
+      "repo_id": "facebook/hubert-base-ls960",
+      "revision": "dba3bb02fda4248b6e082697eee756de8fe8aa8a",
+      "gated": false,
+      "files": [
+        {
+          "name": "README.md",
+          "bytes": 2596,
+          "sha256": null,
+          "git_blob": "1e39166dd1c0b9bc1d66ecbeddf074c788dea1df"
+        },
+        {
+          "name": "config.json",
+          "bytes": 1385,
+          "sha256": null,
+          "git_blob": "5d89400e973a3e0330ca2f517e65d3231e44c762"
+        },
+        {
+          "name": "preprocessor_config.json",
+          "bytes": 213,
+          "sha256": null,
+          "git_blob": "8df8da1de6563b3f11638f4df5f2336f4ca94c04"
+        },
+        {
+          "name": "pytorch_model.bin",
+          "bytes": 377569754,
+          "sha256": "062249fffb353eab67547a2fbc129f7c31a2f459faf641b19e8fb007cc5c48ad",
+          "git_blob": null
+        }
+      ],
+      "loading_info": {
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "mismatched_keys": [],
+        "error_msgs": []
+      }
+    },
+    "lora_targets": [],
+    "torch": "2.15.0+cu132",
+    "claim": "method_adaptation_not_original_paper_SOTA_reproduction"
+  },
+  "hubert_detached_supcon": {
+    "config": {
+      "family": "hubert_supcon",
+      "policy": "full",
+      "objective": "detached_supcon",
+      "epochs": 100,
+      "head_lr": 2e-05,
+      "backbone_lr": 2e-05,
+      "weight_decay": 0.01,
+      "batch_size": 32,
+      "microbatch_size": 1,
+      "gradient_checkpointing": true,
+      "temperature": 0.07,
+      "interpretation": "NeuroVoz_detached_CE_encoder_SupCon_unscaled_adaptation_missing_mining_formula_not_exact_replication",
+      "method": "hubert_detached_supcon",
+      "seed": 20261112,
+      "declared_deviations": [
+        "mPower_sustained_vowels_instead_of_NeuroVoz_repeated_sentences",
+        "fixed_participant_duplicate_component_development_splits_instead_of_original_dataset_split",
+        "HuBERT_CNN_frozen_in_both_speech_arms_as_project_choice",
+        "speech_first_up_to_5_real_seconds_no_padding_or_unspecified_lowpass_filter",
+        "balanced_distinct_people_and_duplicate_masks_for_SupCon",
+        "speech_CE_importance_weighted_to_training_person_prevalence",
+        "projection_single_linear32_depth_unspecified_by_paper",
+        "no_hard_negative_factor_because_mining_formula_unavailable",
+        "fixed_AdamW_LR_no_invented_scheduler",
+        "gradient_clip_norm1_project_stability_choice",
+        "LoRA_head_and_adapter_LRs_differ_from_full_backbone_LR"
+      ],
+      "manifest_sha256": "35e5a70030b4bc116a8f11854119f80c0d70f2d059171931269e8c065988c53b",
+      "model_revision": "dba3bb02fda4248b6e082697eee756de8fe8aa8a",
+      "actual_encoder_augmentation": {
+        "mask_time_prob": 0.0,
+        "mask_feature_prob": 0.0,
+        "layerdrop": 0.0
+      }
+    },
+    "asset": {
+      "repo_id": "facebook/hubert-base-ls960",
+      "revision": "dba3bb02fda4248b6e082697eee756de8fe8aa8a",
+      "gated": false,
+      "files": [
+        {
+          "name": "README.md",
+          "bytes": 2596,
+          "sha256": null,
+          "git_blob": "1e39166dd1c0b9bc1d66ecbeddf074c788dea1df"
+        },
+        {
+          "name": "config.json",
+          "bytes": 1385,
+          "sha256": null,
+          "git_blob": "5d89400e973a3e0330ca2f517e65d3231e44c762"
+        },
+        {
+          "name": "preprocessor_config.json",
+          "bytes": 213,
+          "sha256": null,
+          "git_blob": "8df8da1de6563b3f11638f4df5f2336f4ca94c04"
+        },
+        {
+          "name": "pytorch_model.bin",
+          "bytes": 377569754,
+          "sha256": "062249fffb353eab67547a2fbc129f7c31a2f459faf641b19e8fb007cc5c48ad",
+          "git_blob": null
+        }
+      ],
+      "loading_info": {
+        "missing_keys": [],
+        "unexpected_keys": [],
+        "mismatched_keys": [],
+        "error_msgs": []
+      }
+    },
+    "lora_targets": [],
+    "torch": "2.15.0+cu132",
+    "claim": "method_adaptation_not_original_paper_SOTA_reproduction"
+  }
+}

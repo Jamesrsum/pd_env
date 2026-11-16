@@ -1,0 +1,4 @@
+praat,opensmile,paired,spearman,note
+praat_full__f0_mean_hz,egemaps__F0semitoneFrom27.5Hz_sma3nz_amean,64936,0.906590563870705,Definitions/units/intervals differ; correlation is not agreement in absolute units
+praat_full__jitter_local,egemaps__jitterLocal_sma3nz_amean,64934,0.794650287978373,Definitions/units/intervals differ; correlation is not agreement in absolute units
+praat_full__shimmer_db,egemaps__shimmerLocaldB_sma3nz_amean,64930,0.8593576459882968,Definitions/units/intervals differ; correlation is not agreement in absolute units

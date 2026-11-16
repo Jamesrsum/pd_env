@@ -1,5 +1,10 @@
 # Frozen development protocol implementation — November 14, 2026
 
+**Completion update:** the full18-task array and summary completed successfully,
+yielding364 development pipelines with zero extraction failures. See the
+[executed all-models report](../notebooks/02_All_Models_Methods_and_Results.ipynb).
+References below to queued/unfinished work describe the original submission audit.
+
 This implements the frozen-testing stages of FROZEN_MODEL_PREPROCESSING_PLAN.md.
 Fine-tuning and final evaluation follow after development-only selection and
 release review; neither is launched by this workflow. HeAR remains excluded.

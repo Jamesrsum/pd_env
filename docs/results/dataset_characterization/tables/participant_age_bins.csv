@@ -1,0 +1,36 @@
+diagnosis,age_band,participants
+conflicting,"(0.0, 18.0]",13
+conflicting,"(18.0, 30.0]",46
+conflicting,"(30.0, 40.0]",12
+conflicting,"(40.0, 50.0]",13
+conflicting,"(50.0, 60.0]",9
+conflicting,"(60.0, 70.0]",4
+conflicting,"(70.0, 80.0]",3
+conflicting,"(80.0, 90.0]",1
+conflicting,nan,1
+control,"(0.0, 18.0]",264
+control,"(18.0, 30.0]",1876
+control,"(30.0, 40.0]",849
+control,"(40.0, 50.0]",437
+control,"(50.0, 60.0]",241
+control,"(60.0, 70.0]",142
+control,"(70.0, 80.0]",53
+control,"(80.0, 90.0]",6
+control,nan,22
+pd,"(0.0, 18.0]",6
+pd,"(18.0, 30.0]",9
+pd,"(30.0, 40.0]",30
+pd,"(40.0, 50.0]",118
+pd,"(50.0, 60.0]",280
+pd,"(60.0, 70.0]",366
+pd,"(70.0, 80.0]",141
+pd,"(80.0, 90.0]",16
+pd,nan,4
+unknown,"(0.0, 18.0]",3
+unknown,"(18.0, 30.0]",43
+unknown,"(30.0, 40.0]",8
+unknown,"(40.0, 50.0]",10
+unknown,"(50.0, 60.0]",4
+unknown,"(60.0, 70.0]",3
+unknown,"(70.0, 80.0]",2
+unknown,nan,791

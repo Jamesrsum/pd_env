@@ -1,5 +1,42 @@
 # Current results and execution limits
 
+## Current completed snapshot — November 16, 2026
+
+The two [executed notebooks](../notebooks/README.md) supersede the historical
+runtime/status statements below. They include full dataset characterization,
+all364 frozen pipelines,14 historical adaptations, corrected AST/HeAR controls,
+fusion/downstream panels,18 TabICL comparisons, five completed literature arms,
+and seven acoustic XGBoost/control fits. The final test remains sealed.
+
+All five latest literature production arms completed and saved predictions
+were independently checked against the729 canonical validation people:
+
+| Matched literature arm | AUROC | Selected epoch |
+|---|---:|---:|
+| HeAR converged-LP head-only |.8721|18|
+| HeAR converged-LP → full tuning |.8940|13|
+| HeAR converged-LP → Q/V LoRA |.8908|18|
+| HuBERT Base CE-only |.8604|33|
+| HuBERT Base detached CE + SupCon |.8527|37|
+
+Full/LoRA minus matched head-only AUROC differences are+.02193/+.01869;
+paired component-bootstrap95% intervals[.00989,.03470]/[.00861,.02968].
+These are conditional exploratory intervals from one seed and selected epochs,
+without multiplicity/model-selection correction. The full-minus-LoRA interval
+includes zero. See [verified metrics and audits](results/literature_completed/summary.json).
+
+Acoustic XGBoost completed60 training-CV TPE trials on verifiedCUDA:
+initial-visit AUROC.8169 versus LR.8210; equal-person repeated-visit XGBoost.8380.
+The latter uses more training visits; paired intervals include zero.
+The strongest selected frozen audio pipeline remains Whisper Large-v3.8951.
+Age-only.9330 exceeds these audio scores, so confounding is a major limitation.
+
+The100-recording sample is prepared in approved private storage with100 distinct
+training people,50 PD/50 controls, all copies hash-verified. Recordings are not
+redistributable onGitHub; [handoff/access details](../samples/mpower_100/README.md).
+
+## Historical status snapshots
+
 Snapshot: November 14, 2026. Historical test evidence is from November 12
 local time / November 13 UTC; the HPC cleanup audit is newer. These are aggregate
 execution/QC findings, not a claim of validated
@@ -22,6 +59,10 @@ GPU end-to-end smoke checks (job 27563234). Each used six real recordings and
 both heads. See [local pretrained integration](LOCAL_PRETRAINED_BENCHMARK.md).
 The historical network-blocked attempts below predate this successful run;
 no full-cohort pretrained baseline or validated prediction is claimed.
+
+## Completed frozen-model development comparison
+
+All 18 tasks of Slurm array **27564045** and summary **27564046** completed successfully. The shared development cohort has 53,122 recordings / 4,126 participants; validation rankings use 729 participants. All encoders remained frozen, zero extraction failures were saved, and test labels remained unopened. The 364-pipeline summary shortlists Whisper Large-v3 (AUROC 0.8951) and Whisper Small (0.8878). Age-only AUROC is higher (0.9330), so demographic confounding remains a central limitation. These are validation-selected development results, not final-test performance. See [verified results](FROZEN_DEVELOPMENT_RESULTS.md).
 
 ## Historical verification
 

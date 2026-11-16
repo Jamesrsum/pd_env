@@ -18,7 +18,7 @@
   "development_eligible_recordings": 53122,
   "development_eligible_participants": 4126,
   "metadata_feasibility_exclusions": 8,
-  "full_experiments_completed": false,
+  "full_experiments_completed": true,
   "versions": {
     "numpy": "1.26.4",
     "pandas": "2.2.3",
@@ -27,5 +27,8 @@
     "torch": "2.15.0",
     "transformers": "4.57.6"
   },
-  "release_status": "provisional development cohort; task and near-duplicate review pending; fine-tuning and final test deferred"
+  "release_status": "provisional development cohort; task and near-duplicate review pending; fine-tuning and final test deferred",
+  "completed_gpu_tasks": 18,
+  "summary_state": "COMPLETED",
+  "results_summary": "frozen_development_summary.json"
 }

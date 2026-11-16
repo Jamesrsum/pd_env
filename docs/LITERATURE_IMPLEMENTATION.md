@@ -1,5 +1,13 @@
 # Source-audited literature comparisons
 
+**November16 completion update:** all five production training arms finished.
+HeAR LP-head-only/full/LoRA AUROCs are.8721/.8940/.8908;
+HuBERT CE/detachedSupCon are.8604/.8527. Selected predictions were verified
+against the shared729-person validation cohort. See the
+[complete notebook](../notebooks/02_All_Models_Methods_and_Results.ipynb) and
+[aggregate audits/intervals](results/literature_completed/summary.json).
+Statements below describing jobs as pending are historical submission notes.
+
 The requested single literature reviewer examined 13 primary full PDFs and
 extracted full text privately. Bibliography, PDF hashes/page counts, methodology
 cards, source-code references, missing details and adjacent-field evidence are

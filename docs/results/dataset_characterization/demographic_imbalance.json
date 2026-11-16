@@ -1,0 +1,18 @@
+{
+  "participant_age_mean_difference": 27.640213483891827,
+  "participant_age_median_difference": 32.0,
+  "age_smd": 2.28331029843989,
+  "gender_proportions": {
+    "Female": {
+      "control": 0.18978855079938112,
+      "pd": 0.34917355371900827
+    },
+    "Male": {
+      "control": 0.8102114492006188,
+      "pd": 0.6508264462809917
+    }
+  },
+  "definition": "baseline survey age and reported gender; primary labels exclude contradictions",
+  "pd_participants_with_age": 966,
+  "control_participants_with_age": 3868
+}

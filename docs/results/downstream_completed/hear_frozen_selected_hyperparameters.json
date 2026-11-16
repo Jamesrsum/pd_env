@@ -1,0 +1,36 @@
+{
+  "mean/logistic": {
+    "selected_C": 0.1,
+    "cv_folds": 3,
+    "C_grid": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "search_history_saved": false
+  },
+  "mean/mlp": {
+    "input_dim": 512,
+    "hidden_dim": 64,
+    "epoch_budget": 10,
+    "selected_epoch": null,
+    "audit_gap": "The original HeAR cached-head runner saved selected weights but did not persist epoch/search metadata."
+  },
+  "mean_sd/logistic": {
+    "selected_C": 0.01,
+    "cv_folds": 3,
+    "C_grid": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "search_history_saved": false
+  },
+  "mean_sd/mlp": {
+    "input_dim": 1024,
+    "hidden_dim": 64,
+    "epoch_budget": 10,
+    "selected_epoch": null,
+    "audit_gap": "The original HeAR cached-head runner saved selected weights but did not persist epoch/search metadata."
+  }
+}

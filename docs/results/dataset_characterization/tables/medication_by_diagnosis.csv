@@ -1,0 +1,19 @@
+diagnosis,medication,recordings
+conflicting,Another time,122
+conflicting,I don't take Parkinson medications,397
+conflicting,Immediately before Parkinson medication,92
+conflicting,Just after Parkinson medication (at your best),60
+conflicting,,7
+control,Another time,57
+control,I don't take Parkinson medications,22550
+control,,175
+pd,Another time,17638
+pd,I don't take Parkinson medications,2879
+pd,Immediately before Parkinson medication,9033
+pd,Just after Parkinson medication (at your best),9786
+pd,,52
+unknown,Another time,246
+unknown,I don't take Parkinson medications,1523
+unknown,Immediately before Parkinson medication,172
+unknown,Just after Parkinson medication (at your best),167
+unknown,,66

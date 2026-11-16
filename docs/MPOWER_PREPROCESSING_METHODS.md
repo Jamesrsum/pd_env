@@ -1,5 +1,13 @@
 # Reproducible Phase 1 execution
 
+**Completed full-scope update (November16,2026):** 64,973/65,022 source recordings
+decoded/extracted; the remaining49 match malformed/empty Synapse source objects.
+Current distributions and full-scope associations are in the
+[executed dataset report](../notebooks/01_mPower_Dataset_Characterization.ipynb).
+Pilot/job-start notes below are historical. The original private notebook
+template remains output-free; the two public report notebooks contain reviewed
+aggregate outputs only.
+
 Read `AGENTS.md`, `data_layout.md` and `configs/mpower_preprocessing.yaml` first. No raw files are changed and no additional datasets are downloaded. Participant-bearing manifests, schemas, caches, figures and executed notebooks go to approved storage outside Git. Source notebook outputs are clear.
 
 Use Python 3.12 (tested), not the current Python 3.15 `pd_env` interpreter. Create a separate compatible environment and install `requirements-preprocessing.txt`. Direct dependencies are pinned; the Slurm job records the complete installed environment and FFmpeg version. A bundled imageio FFmpeg executable is a fallback when system FFmpeg is absent. A pre-staged environment archive may be unpacked to compute-node temporary storage with `MPOWER_ENV_ARCHIVE`; it must be compatible with compute-node OS and the base interpreter must be accessible.
@@ -26,7 +34,13 @@ Intermediate outputs are atomic. Each recording has a cache key including audio 
 
 Praat uses autocorrelation pitch 60–500 Hz, 10-ms steps, periodic-cc point processes, period factor 1.3 and amplitude factor 1.6. Local/absolute/RAP/PPQ5/DDP jitter, local/dB/APQ3/APQ5/APQ11/DDA shimmer, F0 summaries and HNR are extracted. NHR derived from mean HNR is explicitly named and is not the mean linear NHR. Perturbation values are fractions, except absolute jitter (seconds) and shimmer dB. Full-recording and longest contiguous pitched interval >=0.5 s measurements are separated. The interval selection does not minimize jitter or shimmer and does not certify stationarity. Undefined values remain missing. Pilot repeats pitch ranges 50–400 / 75–600 Hz and removes 250 ms from both edges for sensitivity.
 
-openSMILE eGeMAPSv02 provides 88 full-recording functionals with original names. librosa provides STFT 1024-point / 160-sample hop features: centroid, bandwidth, rolloff, flatness, five-band contrast, RMS, ZCR, raw FFT spectral-flux summaries and 13 MFCC mean/SD values from a 40-band log-mel power spectrogram. Flux is not amplitude-normalized. Formants, CPP, LLD exports, DDK and language features are not reported. No transformer embeddings or model training occur.
+openSMILE eGeMAPSv02 provides 88 full-recording functionals with original names,
+including its native F1–F3 frequency/bandwidth/relative-amplitude descriptors.
+The spectral extractor provides STFT1024-point/160-sample-hop centroid,
+bandwidth, rolloff, flatness, six contrast indices0–5, RMS, ZCR, raw FFT flux,
+and13 MFCC mean/SD values from40 mel bands. Flux is not amplitude-normalized.
+A separate Praat formant analysis, CPP, LLD exports, DDK and language features
+are not implemented. No transformer/model training occurs in this extraction stage.
 
 Participant-level median aggregation avoids counting repeated recordings as independent in optional exploratory rank comparisons; rank-biserial effects and BH FDR are implemented. After authorized demographics linkage, `demographic_eda.py` computes baseline-age/reported-gender distributions, SMD, PD-stratified duration/QC/frequency summaries, other available covariates, and participant-median OLS with HC3 errors adjusted for age/gender and additionally median recording quality. BH FDR is applied separately to the two adjustment specifications. These are exploratory pilot models, not clinical validation. Cohort C matches equal participant counts within 5-year age bins and gender. Baseline demographic covariates are not time-updated clinical measurements. Separate descriptive recording-level correlations must not be interpreted as participant-independent inference.
 

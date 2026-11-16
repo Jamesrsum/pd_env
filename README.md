@@ -2,8 +2,15 @@
 
 Reproducible mPower metadata linkage, audio QC/acoustic analysis, and frozen
 speech-model benchmarking. The GitHub repository contains code, synthetic
-fixtures, an output-free notebook, methods, and aggregate execution summaries.
+fixtures, executed aggregate-results notebooks, methods, and execution summaries.
 Real research data and private experiment outputs live separately in `pd_data`.
+
+Read the detailed completed reports in order:
+[1. Dataset, distributions and QC](notebooks/01_mPower_Dataset_Characterization.ipynb),
+[2. All models, exact methods, hyperparameters, results and papers](notebooks/02_All_Models_Methods_and_Results.ipynb).
+They contain saved tables/figures and run from reviewed aggregates without data access.
+See [report regeneration](notebooks/README.md) and the
+[100-recording private methodology sample](samples/mpower_100/README.md).
 
 Start with [current results and blockers](docs/CURRENT_RESULTS.md),
 [pd_data context](docs/PD_DATA_CONTEXT.md), and
@@ -26,7 +33,7 @@ src/
   models/      frozen AST, Whisper encoder and wav2vec2 backbone
   training/    logistic/MLP heads and learned attention pooling
   evaluation/  recording/participant metrics and calibration
-notebooks/     unexecuted mPower characterization notebook
+notebooks/     two executed aggregate reports; original private-analysis template
 tests/        synthetic correctness tests and opt-in real integration tests
 docs/         methods, aggregate results, weighting plan and run history
 ```
@@ -107,6 +114,11 @@ See the [local benchmark guide](docs/LOCAL_PRETRAINED_BENCHMARK.md) and
 HeAR PyTorch frozen extraction, controlled fine-tuning and downstream comparisons
 have completed. See the [completed results and analysis](docs/HEAR_RESULTS.md)
 and [protocol](docs/HEAR_AND_REPRESENTATION_NEXT_STEPS.md). The final test remains sealed.
+
+The later converged-probe HeAR full/LoRA arms also completed, reaching validation
+AUROC0.8940/0.8908 against the matched head-only0.8721. All five literature
+training arms and all classifier/acoustic comparisons are detailed in the
+[executed model notebook](notebooks/02_All_Models_Methods_and_Results.ipynb).
 
 Full acoustic preprocessing completed: 64,973/65,022 recordings succeeded.
 The remaining 49 files match their malformed/empty Synapse source objects;

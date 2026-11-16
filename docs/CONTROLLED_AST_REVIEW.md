@@ -1,5 +1,10 @@
 # Research-agent audit and controlled AST rerun
 
+**Completion update:** all corrected branches finished. Frozen/last2/full
+AUROCs were.8715/.8671/.8647; no matched fine-tuning improvement was observed.
+See the [completed methods/results notebook](../notebooks/02_All_Models_Methods_and_Results.ipynb).
+The submission/startup notes below are historical.
+
 Three independent research agents reviewed the executed training code,
 checkpoints, primary paper and authors' implementation. The previous runs are
 preserved under private adaptation_20261114; no prior result was overwritten.

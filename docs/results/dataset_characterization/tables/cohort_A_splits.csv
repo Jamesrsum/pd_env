@@ -1,0 +1,7 @@
+split,diagnosis,recordings,participants
+test,control,3520,583
+test,pd,5473,145
+train,control,15702,2718
+train,pd,28007,679
+val,control,3525,583
+val,pd,5896,146

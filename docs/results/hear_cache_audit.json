@@ -1,0 +1,16 @@
+{
+  "checked_date": "2026-11-14",
+  "repository": "google/hear",
+  "revision": "9b2eb2853c426676255cc6ac5804b7f1fe8e563f",
+  "variant": "tensorflow",
+  "files": {
+    ".gitattributes": 1819,
+    "README.md": 11895
+  },
+  "weights_present": false,
+  "loadable_checkpoint_verified": false,
+  "tensorflow_available_in_benchmark_environment": false,
+  "torchvision_available_in_benchmark_environment": false,
+  "additional_download_started": false,
+  "credentials_read": false
+}
