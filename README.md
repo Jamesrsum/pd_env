@@ -141,3 +141,7 @@ The [single-agent full-PDF literature review](docs/literature/REVIEW.md) covers
 direct PD methods and adjacent small-data fields. The [implementation guide](docs/LITERATURE_IMPLEMENTATION.md)
 documents LP-initialized full/LoRA comparisons, detached-classifier HuBERT SupCon,
 and local TabICL2025/2026 classifiers, with source fidelity, deviations and Slurm status.
+
+[GPU acoustic XGBoost](docs/ACOUSTIC_XGBOOST.md) is implemented and completed:
+184 acoustic features,60 TPE trials, participant/component-grouped training CV,
+native missing-value handling, repeated-visit sensitivity and SHAP diagnostics.

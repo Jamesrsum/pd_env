@@ -1,0 +1,3 @@
+-r requirements-benchmark.txt
+xgboost==3.4.1
+optuna==4.6.0

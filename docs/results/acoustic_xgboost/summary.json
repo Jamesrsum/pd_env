@@ -1,0 +1,62 @@
+{
+  "status": "completed_GPU_acoustic_XGBoost",
+  "test_labels_read": false,
+  "validation_people": 729,
+  "validation_PD": 146,
+  "train_people": 3397,
+  "repeated_train_recordings": 43702,
+  "feature_count": 184,
+  "best_search": {
+    "params": {
+      "max_depth": 4,
+      "min_child_weight": 1.4601136400747847,
+      "eta": 0.04428572219201701,
+      "subsample": 0.7513234299528642,
+      "colsample_bytree": 0.9005279768547643,
+      "lambda": 4.247342235624237,
+      "alpha": 8.80283230032447e-07,
+      "gamma": 0.6891017929793257,
+      "max_bin": 128
+    },
+    "boost_rounds": 823,
+    "cv_auroc": 0.8064482480332811,
+    "cv_auc_std": 0.0034707328649586883,
+    "trial": 40,
+    "completed_trials": 60,
+    "signature": "16ba52331ad9a12e6b963b3d27566cd9cb5d232ddcc6bb9fb2f421f9eb6861f2"
+  },
+  "paired_comparisons": {
+    "primary_minus_logistic": {
+      "auroc_difference": -0.004053196738645237,
+      "paired_component_bootstrap_95pct": [
+        -0.036819804086193904,
+        0.028197466506127495
+      ]
+    },
+    "repeated_minus_primary": {
+      "auroc_difference": 0.021135365022674435,
+      "paired_component_bootstrap_95pct": [
+        -0.002704832147335423,
+        0.043937314796761384
+      ]
+    },
+    "repeated_minus_logistic": {
+      "auroc_difference": 0.017082168284029198,
+      "paired_component_bootstrap_95pct": [
+        -0.010858337745066334,
+        0.046059235308206534
+      ]
+    }
+  },
+  "GPU_verification": {
+    "requested": "cuda",
+    "actual": "cuda:0",
+    "CUDA_build": true,
+    "histogram_verified": true
+  },
+  "model_reload_verified": true,
+  "SHAP_sum_verified": true,
+  "uncertainty": "Exploratory validation intervals conditional on selected models; not corrected for model selection or training seeds.",
+  "comparison_design": "Primary versus logistic uses initial training visits. Repeated-visit model uses more training recordings with equal-person weights and fixed primary hyperparameters.",
+  "feature_span": "Existing full-clip acoustic measurements; not recomputed at encoder 10s cap."
+}

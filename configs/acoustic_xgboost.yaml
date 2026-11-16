@@ -1,0 +1,15 @@
+seed: 20261112
+device: cuda
+threads: 4
+cv_folds: 3
+trials: 60
+max_rounds: 2500
+early_stopping_rounds: 75
+primary_training: canonical_initial_visit_per_participant
+selection: training_grouped_CV_AUROC_only
+missing_values: native_XGBoost_missing_branches_no_validation_imputation
+search_algorithm: seeded_multivariate_TPE
+class_weight: none
+diagnostics: [praat_only, egemaps_only, spectral_only, missingness_only]
+repeated_visit_sensitivity: same_selected_hyperparameters_equal_person_weight
+final_test: sealed
