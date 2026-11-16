@@ -1,0 +1,47 @@
+{
+  "official_repository": "https://github.com/soda-inria/tabicl",
+  "library": {
+    "package": "tabicl",
+    "version": "2.2.0",
+    "wheel_sha256": "c80b8ec2719be26bc0bf1dd758a2361f58019d8f7877038b785529a425789ce4",
+    "constructor_verified_by": "static AST inspection of published wheel tabicl/_sklearn/classifier.py"
+  },
+  "weights": {
+    "repo_id": "jingang/TabICL",
+    "revision": "4dcd344ece2c00be9e831fdd35bed57b5ad83e19",
+    "gated": false,
+    "license": "BSD-3-Clause",
+    "files": [
+      {
+        "name": "tabicl-classifier-v1-20250208.ckpt",
+        "bytes": 108317991,
+        "sha256": "04c5c1d261c1f782dc9b263990dcfa5152b1949ed8451ad16c010cdafbea07e0",
+        "method": "ICML2025",
+        "paper_n_estimators": 32
+      },
+      {
+        "name": "tabicl-classifier-v2-20260212.ckpt",
+        "bytes": 110368038,
+        "sha256": "bdc7dbd5e4ff21f8f0456fcf90c6b7cdf72dbea960f2d05b19bec19f9b3d4ed0",
+        "method": "2026TabICLv2",
+        "TabArena_n_estimators": 8,
+        "TALENT_n_estimators": 32
+      }
+    ]
+  },
+  "runtime_contract": {
+    "model_path": "verified local checkpoint",
+    "allow_auto_download": false,
+    "checkpoint_version": "explicit chosen file",
+    "device": "cuda",
+    "use_amp": false,
+    "use_fa3": false,
+    "batch_size": "lower ensemble batching if memory constrained",
+    "n_jobs": "allocated CPU threads",
+    "random_state": "fixed registered seed",
+    "fit": "training participants/features/labels only",
+    "predict_proba": "local query inference; no external API",
+    "preprocessing": "PCA128 fitted within each train-only participant/component fold"
+  },
+  "interpretation": "new downstream hypothesis on audio embeddings; no established PD score claimed"
+}

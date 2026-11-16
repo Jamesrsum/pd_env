@@ -1,0 +1,106 @@
+{
+  "hear": {
+    "url": "https://arxiv.org/pdf/2403.02522",
+    "bytes": 4102135,
+    "sha256": "7232eb80ee17d2b2186ea1627bcfa1d7e2695a58debbce80a90ea2fec97d28c7",
+    "pdf_pages": 21,
+    "text_characters": 79024,
+    "full_text_extracted": true
+  },
+  "lpft": {
+    "url": "https://arxiv.org/pdf/2202.10054",
+    "bytes": 939426,
+    "sha256": "dc52ebad1dba8876ecad06788754a387d4274aa7bcda0d0296a96928aa747cf8",
+    "pdf_pages": 54,
+    "text_characters": 192813,
+    "full_text_extracted": true
+  },
+  "lora": {
+    "url": "https://arxiv.org/pdf/2106.09685",
+    "bytes": 1609513,
+    "sha256": "e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+    "pdf_pages": 26,
+    "text_characters": 116183,
+    "full_text_extracted": true
+  },
+  "lungadapter": {
+    "url": "https://www.isca-archive.org/interspeech_2024/xiao24_interspeech.pdf",
+    "bytes": 360225,
+    "sha256": "7363266cdba0a10fb07849189ddde9149548a0fdf84eabad26cbc910480c7fce",
+    "pdf_pages": 5,
+    "text_characters": 43795,
+    "full_text_extracted": true
+  },
+  "supcon_pd": {
+    "url": "https://mdpi-res.com/d_attachment/bioengineering/bioengineering-12-00728/article_deploy/bioengineering-12-00728.pdf",
+    "bytes": 4396473,
+    "sha256": "8e22fc0d0efa719d1fcd5dbc82a10ff86b40a3bbe7228c98e0d321aee6c8ac45",
+    "pdf_pages": 22,
+    "text_characters": 102063,
+    "full_text_extracted": true
+  },
+  "ast_pd": {
+    "url": "https://www.nature.com/articles/s41598-024-81824-x.pdf",
+    "bytes": 4517927,
+    "sha256": "3ca9714435c0043375bcb3ad9ae1c4cc2086b3e63a103f887844af105a1c51da",
+    "pdf_pages": 21,
+    "text_characters": 129235,
+    "full_text_extracted": true
+  },
+  "cba_whisper": {
+    "url": "https://www.isca-archive.org/interspeech_2025/tan25b_interspeech.pdf",
+    "bytes": 360968,
+    "sha256": "8526161784ae6f96dc67eef82152fc8adcc94dafaed1defe7a1e962b26dfd231",
+    "pdf_pages": 5,
+    "text_characters": 49850,
+    "full_text_extracted": true
+  },
+  "sg_scl": {
+    "url": "https://arxiv.org/pdf/2312.09603",
+    "bytes": 573841,
+    "sha256": "e0478e0afb1124a9d108bae3cff84756cb4081127fe373d5fe34a2f45b33cd7a",
+    "pdf_pages": 5,
+    "text_characters": 38217,
+    "full_text_extracted": true
+  },
+  "wavlm_ser": {
+    "url": "https://arxiv.org/pdf/2405.04485",
+    "bytes": 272456,
+    "sha256": "a58b362a809cf35608d674f3fdb2c767b5e3b7c455cac682125cf11ecde0a46a",
+    "pdf_pages": 6,
+    "text_characters": 47566,
+    "full_text_extracted": true
+  },
+  "voicefm": {
+    "url": "https://www.medrxiv.org/content/10.64898/2026.05.28.26354346v1.full.pdf",
+    "bytes": 10164335,
+    "sha256": "f82d18d03a29be7e75741b58310061390aa8be893011ab2db81972ab3b1041ee",
+    "pdf_pages": 43,
+    "text_characters": 142770,
+    "full_text_extracted": true
+  },
+  "tabpfn": {
+    "url": "https://www.nature.com/articles/s41586-024-08328-6.pdf",
+    "bytes": 16957699,
+    "sha256": "6b5ce3dba2ef7454ad0868ad733a64b4ac89bcd98307773fad1e0e977caaa013",
+    "full_text_extracted": true,
+    "pdf_pages": 23,
+    "text_characters": 177269
+  },
+  "tabicl": {
+    "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/qu25d/qu25d.pdf",
+    "bytes": 2636850,
+    "sha256": "0a8b2b370f55a93af346ab889dd699256def80ef967740cfa876277ff9ae8617",
+    "full_text_extracted": true,
+    "pdf_pages": 31,
+    "text_characters": 169172
+  },
+  "tabiclv2": {
+    "url": "https://arxiv.org/pdf/2602.11139",
+    "bytes": 15274950,
+    "sha256": "71554be35ba3847a14267912d9738f6049545cf74a30d860de1ed23d14d95246",
+    "full_text_extracted": true,
+    "pdf_pages": 79,
+    "text_characters": 419553
+  }
+}

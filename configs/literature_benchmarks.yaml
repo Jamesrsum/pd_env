@@ -1,0 +1,80 @@
+# Source methodology cards are in docs/literature/. These are mPower adaptations.
+seed: 20261112
+methods:
+  hear_lp_frozen:
+    family: hear_lpft
+    policy: frozen
+    objective: bce
+    epochs: 20
+    head_lr: 0.0001
+    backbone_lr: 0.000005
+    weight_decay: 0.01
+    batch_size: 32
+    microbatch_size: 1
+    gradient_checkpointing: false
+    interpretation: strong_converged_LP_head_only_control
+  hear_lp_full:
+    family: hear_lpft
+    policy: full
+    objective: bce
+    epochs: 20
+    head_lr: 0.0001
+    backbone_lr: 0.000005
+    weight_decay: 0.01
+    batch_size: 32
+    microbatch_size: 1
+    gradient_checkpointing: true
+    interpretation: LP_FT_method_adapted_from_Kumar_ICLR2022_not_original_dataset_replication
+  hear_lp_lora:
+    family: hear_lpft
+    policy: lora
+    objective: bce
+    epochs: 20
+    head_lr: 0.0001
+    backbone_lr: 0.0001
+    weight_decay: 0.01
+    batch_size: 32
+    microbatch_size: 1
+    gradient_checkpointing: true
+    lora_rank: 8
+    lora_alpha: 16
+    lora_dropout: 0.0
+    interpretation: QV_LoRA_from_converged_LP_original_LoRA_math_with_project_HeAR_hyperparameters
+  hubert_ce:
+    family: hubert_supcon
+    policy: full
+    objective: ce
+    epochs: 100
+    head_lr: 0.00002
+    backbone_lr: 0.00002
+    weight_decay: 0.01
+    batch_size: 32
+    microbatch_size: 1
+    gradient_checkpointing: true
+    interpretation: NeuroVoz_paper_mechanism_control_adapted_to_mPower_vowels_frozen_CNN_no_unspecified_filtering
+  hubert_detached_supcon:
+    family: hubert_supcon
+    policy: full
+    objective: detached_supcon
+    epochs: 100
+    head_lr: 0.00002
+    backbone_lr: 0.00002
+    weight_decay: 0.01
+    batch_size: 32
+    microbatch_size: 1
+    gradient_checkpointing: true
+    temperature: 0.07
+    interpretation: NeuroVoz_detached_CE_encoder_SupCon_unscaled_adaptation_missing_mining_formula_not_exact_replication
+final_test: sealed
+declared_deviations:
+  - mPower_sustained_vowels_instead_of_NeuroVoz_repeated_sentences
+  - fixed_participant_duplicate_component_development_splits_instead_of_original_dataset_split
+  - HuBERT_CNN_frozen_in_both_speech_arms_as_project_choice
+  - speech_first_up_to_5_real_seconds_no_padding_or_unspecified_lowpass_filter
+  - balanced_distinct_people_and_duplicate_masks_for_SupCon
+  - speech_CE_importance_weighted_to_training_person_prevalence
+  - projection_single_linear32_depth_unspecified_by_paper
+  - no_hard_negative_factor_because_mining_formula_unavailable
+  - fixed_AdamW_LR_no_invented_scheduler
+  - gradient_clip_norm1_project_stability_choice
+  - LoRA_head_and_adapter_LRs_differ_from_full_backbone_LR

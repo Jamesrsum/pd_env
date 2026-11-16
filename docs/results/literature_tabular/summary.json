@@ -1,0 +1,67 @@
+{
+  "status": "completed_development_panel",
+  "comparisons": 18,
+  "validation_participants": 729,
+  "validation_PD": 146,
+  "test_labels_read": false,
+  "paired_comparisons": {
+    "hear_v2_minus_LR": {
+      "auroc_delta": 0.007730444794285529,
+      "paired_component_bootstrap_95pct": [
+        -0.0039569765899285046,
+        0.021036537728164943
+      ]
+    },
+    "whisper_small_v2_minus_LR": {
+      "auroc_delta": -0.0021852017199651685,
+      "paired_component_bootstrap_95pct": [
+        -0.01642194911620936,
+        0.010968937293627268
+      ]
+    },
+    "wavlm_large_v2_minus_LR": {
+      "auroc_delta": 0.009339975093399677,
+      "paired_component_bootstrap_95pct": [
+        -0.003403304286197789,
+        0.02314911221694497
+      ]
+    },
+    "wavlm_v2_minus_v1": {
+      "auroc_delta": 0.006814069879461537,
+      "paired_component_bootstrap_95pct": [
+        -0.001980996777246746,
+        0.015249418144300116
+      ]
+    },
+    "hear_50_labels_v2_minus_LR": {
+      "auroc_delta": 0.049296271059000474,
+      "paired_component_bootstrap_95pct": [
+        -0.0011490293704862929,
+        0.10196853903874747
+      ]
+    },
+    "hear_100_labels_v2_minus_LR": {
+      "auroc_delta": -0.03872271434949137,
+      "paired_component_bootstrap_95pct": [
+        -0.08917286003040642,
+        0.013880622987558948
+      ]
+    },
+    "hear_500_labels_v2_minus_LR": {
+      "auroc_delta": 0.00693155384290034,
+      "paired_component_bootstrap_95pct": [
+        -0.014559358629703246,
+        0.030567954383124506
+      ]
+    }
+  },
+  "bootstrap_replicates": 2000,
+  "training_context_seeds": [
+    20261112
+  ],
+  "limitations": [
+    "Exploratory validation; no correction for model selection or training-context seed variability.",
+    "Single non-nested stratified context per budget; PCA dimensions vary. Compare classifiers within a budget, not a pure causal label-count effect.",
+    "TabICL pretraining uses synthetic tables; small labelled context is not foundation training from scratch."
+  ]
+}

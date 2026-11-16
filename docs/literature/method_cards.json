@@ -1,0 +1,643 @@
+{
+  "review_date": "2026-11-16",
+  "reviewer_count": 1,
+  "review_scope": "primary full PDFs downloaded and full text extracted; methodology/appendix/code examined; no claim every proof line audited",
+  "private_archive": "$MPOWER_BENCHMARK_ROOT/literature_review",
+  "papers": [
+    {
+      "id": "ast_pd",
+      "title": "Transformer-based transfer learning on self-reported voice recordings for Parkinson\u2019s disease diagnosis",
+      "year": 2024,
+      "doi_or_arxiv": "10.1038/s41598-024-81824-x",
+      "primary_pdf": {
+        "url": "https://www.nature.com/articles/s41598-024-81824-x.pdf",
+        "bytes": 4517927,
+        "sha256": "3ca9714435c0043375bcb3ad9ae1c4cc2086b3e63a103f887844af105a1c51da",
+        "pdf_pages": 21,
+        "text_characters": 129235,
+        "full_text_extracted": true
+      },
+      "methodology_page_references": [
+        "14\u201317 methods",
+        "Tables3\u20134 subject-wise results"
+      ],
+      "method": {
+        "sample_unit": "10s sustained vowel; repeated recordings/person",
+        "cohort": "selected medication and multimodal-overlap mPower participants",
+        "input": "16k mono; repeat short audio to10s;128-Mel;25ms Hamming/10ms hop;native AST grid",
+        "pretraining": "AudioSet AST",
+        "loss": "binary cross entropy",
+        "optimizer": "SGD momentum.9 Nesterov weight_decay.01",
+        "batch_size": 32,
+        "epochs": {
+          "frozen_head": 10,
+          "fine_tuning": 20
+        },
+        "lr": {
+          "head_warmup": 0.001,
+          "transformer_ft_initial": 1e-05,
+          "cosine_floor": 1e-06
+        },
+        "seeds": 5,
+        "evaluation": "subject-wise and record-wise; mean/max/vote across repeated recordings",
+        "reported_subject_mean_auroc": 0.9589
+      },
+      "missing_or_ambiguous_details": [
+        "no final frozen-pretrained control",
+        "authors notebook/paper settings differ",
+        "trained author checkpoint overlap with our subjects unresolved"
+      ],
+      "mpower_transfer": [
+        "primary comparison remains participant-disjoint",
+        "no repeat-padding in our primary protocol",
+        "initial-visit endpoint differs from mean-of-record-predictions",
+        "initialize from AudioSet, not authors mPower-trained checkpoint"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score",
+      "official_code": {
+        "url": "https://github.com/Jetliqs/PDVAT",
+        "head_sha": "f8e240c88c49affc03c48d86a750788b1b2b9c3c",
+        "license": "not found"
+      }
+    },
+    {
+      "id": "supcon_pd",
+      "title": "Speech-Based Parkinson\u2019s Detection Using Pre-Trained Self-Supervised Automatic Speech Recognition (ASR) Models and Supervised Contrastive Learning",
+      "year": 2025,
+      "doi_or_arxiv": "10.3390/bioengineering12070728",
+      "primary_pdf": {
+        "url": "https://mdpi-res.com/d_attachment/bioengineering/bioengineering-12-00728/article_deploy/bioengineering-12-00728.pdf",
+        "bytes": 4396473,
+        "sha256": "8e22fc0d0efa719d1fcd5dbc82a10ff86b40a3bbe7228c98e0d321aee6c8ac45",
+        "pdf_pages": 22,
+        "text_characters": 102063,
+        "full_text_extracted": true
+      },
+      "methodology_page_references": [
+        "3\u20138 methodology",
+        "17 hard-negative/frozen ablations",
+        "19 code/model availability"
+      ],
+      "method": {
+        "cohort": {
+          "speakers": 112,
+          "pd": 54,
+          "controls": 58,
+          "sentence_recordings": 1695,
+          "tasks": 16
+        },
+        "input": "16k;trim leading/trailing silence;pad/crop5s;training low-pass augmentation",
+        "encoder": "12 transformer layers,768D;HuBERT-base-ls960 unambiguous;Wav2Vec2 variants ambiguously mapped",
+        "pooling": "mean across sequence",
+        "classifier": "768\u219264,ReLU,dropout.2,64\u21922",
+        "projection_dim": 32,
+        "loss": "SupCon encoder/projector;CE classifier on detached representation",
+        "temperature": 0.07,
+        "hard_negative_scale_reported": 1.5,
+        "optimizer": "AdamW",
+        "learning_rate": 2e-05,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "weight_decay": 0.01,
+        "batch_size": 32,
+        "max_epochs": 100,
+        "evaluation": "80/20 speaker-disjoint holdout;5-fold speaker-independent CV on train;early stopping",
+        "best_reported_f1": {
+          "wav2vec2": 0.9,
+          "hubert": 0.8899
+        }
+      },
+      "missing_or_ambiguous_details": [
+        "projector layer topology",
+        "hard-negative mining/scaling exact algorithm",
+        "scheduler and patience",
+        "CNN freeze policy",
+        "code on request only",
+        "supplement attachment unavailable (403/404)"
+      ],
+      "mpower_transfer": [
+        "sustained vowels differ from Spanish sentences",
+        "preserve detached classification gradient",
+        "unscaled adapted SupCon if hard-mining algorithm remains unavailable",
+        "mask same-person/duplicate pairs;actual batch32 people"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score"
+    },
+    {
+      "id": "hear",
+      "title": "HeAR \u2014 Health Acoustic Representations",
+      "year": 2024,
+      "doi_or_arxiv": "2403.02522",
+      "primary_pdf": {
+        "url": "https://arxiv.org/pdf/2403.02522",
+        "bytes": 4102135,
+        "sha256": "7232eb80ee17d2b2186ea1627bcfa1d7e2695a58debbce80a90ea2fec97d28c7",
+        "pdf_pages": 21,
+        "text_characters": 79024,
+        "full_text_extracted": true
+      },
+      "methodology_page_references": [
+        "3\u20134 encoder/probes",
+        "AppendixF label efficiency"
+      ],
+      "method": {
+        "encoder": "ViT-L masked autoencoder;313.3M two-second health clips pretraining",
+        "input": "2s16k audio;official frontend",
+        "downstream": "frozen embeddings;ridge linear/logistic probes",
+        "cv": "group individuals/clips/sites when available",
+        "label_fraction_tests": [
+          0.0625,
+          0.125,
+          0.25,
+          0.5,
+          1.0
+        ]
+      },
+      "missing_or_ambiguous_details": [
+        "do not equate paper research encoder exports with each later checkpoint release"
+      ],
+      "mpower_transfer": [
+        "retain strong frozen probe",
+        "shared actual source-span pooling",
+        "do not claim paper proves fine-tuning superiority"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score"
+    },
+    {
+      "id": "lpft",
+      "title": "Fine-Tuning can Distort Pretrained Features and Underperform Out-of-Distribution",
+      "year": 2022,
+      "doi_or_arxiv": "2202.10054",
+      "primary_pdf": {
+        "url": "https://arxiv.org/pdf/2202.10054",
+        "bytes": 939426,
+        "sha256": "dc52ebad1dba8876ecad06788754a387d4274aa7bcda0d0296a96928aa747cf8",
+        "pdf_pages": 54,
+        "text_characters": 192813,
+        "full_text_extracted": true
+      },
+      "methodology_page_references": [
+        "Sections4.1\u20134.3",
+        "AppendixB pp47\u201348"
+      ],
+      "method": {
+        "domain": "vision distribution shift",
+        "mechanism": "fit linear probe to convergence;initialize classifier from trained probe;then tune full network",
+        "imagenet_budget": {
+          "batch": 128,
+          "lp_epochs": 5,
+          "ft_epochs": 5,
+          "lp_lr_grid": [
+            0.01,
+            0.03,
+            0.1
+          ],
+          "ft_lr_grid": [
+            1e-05,
+            3e-05,
+            0.0001
+          ]
+        },
+        "other_datasets": "20/50epoch dataset-specific budgets;source validation model selection"
+      },
+      "missing_or_ambiguous_details": [
+        "optimizer/momentum/weight_decay not uniformlyspecified across paper datasets",
+        "no verified code license"
+      ],
+      "mpower_transfer": [
+        "method adaptation to HeAR",
+        "keep identical standardized head and initial logits",
+        "fold scaler into head or preserve frozen scaler buffers",
+        "head-only/full/LoRA share exact initialization"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score",
+      "official_code": {
+        "url": "https://github.com/AnanyaKumar/transfer_learning",
+        "license": "not verified; no license visible in root listing"
+      }
+    },
+    {
+      "id": "lora",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "year": 2022,
+      "doi_or_arxiv": "2106.09685",
+      "primary_pdf": {
+        "url": "https://arxiv.org/pdf/2106.09685",
+        "bytes": 1609513,
+        "sha256": "e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+        "pdf_pages": 26,
+        "text_characters": 116183,
+        "full_text_extracted": true
+      },
+      "methodology_page_references": [
+        "Section4",
+        "Section7",
+        "AppendixTable9"
+      ],
+      "method": {
+        "mechanism": "frozen W + (alpha/r)BA",
+        "initialization": "random A;zero B;zero initial update",
+        "target_layers": "query and value projections supported by ablations",
+        "roberta_large": {
+          "rank": 8,
+          "alpha": 16
+        },
+        "roberta_base": {
+          "rank": 8,
+          "alpha": 8
+        },
+        "optimizer": "AdamW task-specific schedules",
+        "checkpoints": "adapter matrices plus independently trainable task head"
+      },
+      "missing_or_ambiguous_details": [
+        "no PD/HeAR-specific best hyperparameters",
+        "rank/dropout/optimizer tuned by downstreamtask"
+      ],
+      "mpower_transfer": [
+        "HeAR Q,V rank8alpha16 is an adaptation",
+        "dropout0 is a declared project hypothesis",
+        "verify adapter grads/base invariance/zero-update/merge/checkpoint behavior"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score",
+      "official_code": {
+        "url": "https://github.com/microsoft/LoRA",
+        "head_sha": "c4593f060e6a368d7bb5af5273b8e42810cdef90",
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "lungadapter",
+      "title": "LungAdapter: Efficient Adapting Audio Spectrogram Transformer for Lung Sound Classification",
+      "year": 2024,
+      "doi_or_arxiv": "10.21437/Interspeech.2024-106",
+      "primary_pdf": {
+        "url": "https://www.isca-archive.org/interspeech_2024/xiao24_interspeech.pdf",
+        "bytes": 360225,
+        "sha256": "7363266cdba0a10fb07849189ddde9149548a0fdf84eabad26cbc910480c7fce",
+        "pdf_pages": 5,
+        "text_characters": 43795,
+        "full_text_extracted": true
+      },
+      "methodology_page_references": [
+        "2\u20133 architecture/training",
+        "4 Table1"
+      ],
+      "method": {
+        "dataset": "ICBHI;6898cycles~5.5h;79train/49testpatients official60/40split",
+        "input": "16k8s128-Mel;25msHamming10mshop;normalize mean\u22124.27 SD4.57",
+        "model": "frozen ImageNet+AudioSet AST",
+        "adapters": "attention serialwidth16 depthwise3/5/7;parallelFFN bottleneckratio.15",
+        "trainable_parameters": 2480000,
+        "total_parameters_approx": 90010000,
+        "optimizer": "Adam",
+        "lr": 0.0005,
+        "batch": 8,
+        "epochs": 50,
+        "schedule": "cosine",
+        "loss": "weightedCE",
+        "runs": 5,
+        "reported_scores": {
+          "four_class": 0.624,
+          "two_class": 0.6953
+        }
+      },
+      "missing_or_ambiguous_details": [
+        "official implementation/license notverified",
+        "some architecture scale/initialization choices underspecified"
+      ],
+      "mpower_transfer": [
+        "parameter-efficient adaptation inspiration",
+        "different sound/event endpoint;no PD-score replication claim"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score"
+    },
+    {
+      "id": "sg_scl",
+      "title": "Stethoscope-guided Supervised Contrastive Learning for Cross-domain Adaptation on Respiratory Sound Classification",
+      "year": 2024,
+      "doi_or_arxiv": "2312.09603",
+      "primary_pdf": {
+        "url": "https://arxiv.org/pdf/2312.09603",
+        "bytes": 573841,
+        "sha256": "e0478e0afb1124a9d108bae3cff84756cb4081127fe373d5fe34a2f45b33cd7a",
+        "pdf_pages": 5,
+        "text_characters": 38217,
+        "full_text_extracted": true
+      },
+      "methodology_page_references": [
+        "2 preprocessing/training",
+        "3 Eq2/gradientroutes",
+        "4 results"
+      ],
+      "method": {
+        "dataset": "ICBHI official60/40split",
+        "input": "16k8s128Fbank;normalize\u22124.27/4.57;SpecAugment",
+        "model": "AST AudioSet+ImageNet",
+        "objective": "CE + scheduled domain-adversarial contrastive term;gradient reversal;stop target gradients",
+        "positive_mask": "SAME device d_p=d_i, not same diagnosis across devices",
+        "projector": "two768DMLPlayers ReLU/BN",
+        "temperature": 0.06,
+        "paper_lambda": "0.0096\u21921 over200steps",
+        "official_script": {
+          "optimizer": "Adam",
+          "learning_rate": 5e-05,
+          "weight_decay": 1e-06,
+          "cosine": true,
+          "batch": 8,
+          "epochs": 50,
+          "moving_average_beta": 0.5
+        },
+        "runs": 5,
+        "reported_icbhi_score": 0.6171
+      },
+      "missing_or_ambiguous_details": [
+        "paper/script lambda implementation must be reconciled",
+        "no verified repository license"
+      ],
+      "mpower_transfer": [
+        "conditional futuredevice-adversarial pilot",
+        "must audit diagnosis/device common support",
+        "do not implement ordinaryclassSupCon under SG-SCLname"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score",
+      "official_code": {
+        "url": "https://github.com/kaen2891/stethoscope-guided_supervised_contrastive_learning",
+        "head_sha": "2ed1bacc7121653805702f3a1afb5557a56f5a05",
+        "license": "not verified"
+      }
+    },
+    {
+      "id": "cba_whisper",
+      "title": "CBA-Whisper: Curriculum Learning-Based AdaLoRA Fine-Tuning on Whisper for Low-Resource Dysarthric Speech Recognition",
+      "year": 2025,
+      "doi_or_arxiv": "10.21437/Interspeech.2025-1705",
+      "primary_pdf": {
+        "url": "https://www.isca-archive.org/interspeech_2025/tan25b_interspeech.pdf",
+        "bytes": 360968,
+        "sha256": "8526161784ae6f96dc67eef82152fc8adcc94dafaed1defe7a1e962b26dfd231",
+        "pdf_pages": 5,
+        "text_characters": 49850,
+        "full_text_extracted": true
+      },
+      "methodology_page_references": [
+        "2 data and model",
+        "3 curriculum",
+        "4 training/results"
+      ],
+      "method": {
+        "endpoint": "transcription WER/SemScore,not diagnosis",
+        "model": "Whisperlarge-v2+AdaLoRA",
+        "actual_training_hours": {
+          "SAPtrain": 53.48,
+          "SAPdev": 41.23,
+          "UA": 6.92,
+          "TORGO": 0.13
+        },
+        "input": "loudnessnormalize,VAD,cutmerge~30s",
+        "adaption": {
+          "initial_rank": 12,
+          "target_rank": 4
+        },
+        "optimizer": "AdamW",
+        "learning_rate": 0.001,
+        "warmup_steps": 50,
+        "batch": 6,
+        "max_epochs": 2,
+        "gpus": 4,
+        "curriculum": "reference-transcript SemScore filtering;semanticthreshold50",
+        "postprocessing": "deduplication+normalization",
+        "reported_test2_WER": 0.1051
+      },
+      "missing_or_ambiguous_details": [
+        "ASR target modules/alpha rely on external config",
+        "no verified mainrepo code license",
+        "the <one-fifth claim excludes additionaldev/externaldata"
+      ],
+      "mpower_transfer": [
+        "do not import transcriptfiltering into vowels",
+        "PEFT inspiration only"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score",
+      "official_code": {
+        "url": "https://github.com/tan90xx/CBA-Whisper",
+        "head_sha": "cd7d8676522e043b7f6088b1356b3c4f23342b61",
+        "license": "not verified"
+      }
+    },
+    {
+      "id": "voicefm",
+      "title": "Towards A Foundation Model for Clinical Voice Biomarkers",
+      "year": 2026,
+      "doi_or_arxiv": "10.64898/2026.05.28.26354346",
+      "primary_pdf": {
+        "url": "https://www.medrxiv.org/content/10.64898/2026.05.28.26354346v1.full.pdf",
+        "bytes": 10164335,
+        "sha256": "f82d18d03a29be7e75741b58310061390aa8be893011ab2db81972ab3b1041ee",
+        "pdf_pages": 43,
+        "text_characters": 142770,
+        "full_text_extracted": true
+      },
+      "methodology_page_references": [
+        "Methods voice model/training",
+        "TableS1 clinicaltargets",
+        "mPower adaptation methods"
+      ],
+      "method": {
+        "publication": "medRxivpreprint;notpeerreviewcertified",
+        "cohort": "846B2AItrain+138temporalholdout;multiplevoice/speech/respiratorytasks",
+        "input": "16kmono;max30s;\u221240dBtrim;unitpeaknormalize",
+        "backbone": "Whisperlarge-v2layers28\u201331 unfrozen;meanpool;Linear/LN/GELU256",
+        "clinical_teacher": "TabTransformer4layers4heads256D;44clinicalfeatures includingdiagnoses,age,sex,questionnaires",
+        "loss": "symmetricInfoNCE learnedtau +categoryBCE.1+ageMSE.05",
+        "optimizer": "AdamW",
+        "learning_rates": {
+          "backbone": 1e-05,
+          "head": 0.0001
+        },
+        "schedule": "cosine10%warmup",
+        "batch": 32,
+        "gradient_accumulation": 2,
+        "max_epochs": 200,
+        "patience": 25,
+        "sampling": "one recording/person/epoch",
+        "mPower_finetune": "one seed5epochs;participantmeanvisit testAUROC.87"
+      },
+      "missing_or_ambiguous_details": [
+        "code-only repo;weights separateDUA",
+        "hardnegative/mining details needcodeverification",
+        "accumulationdoesnotautomaticallymake64contrastiveexamples"
+      ],
+      "mpower_transfer": [
+        "clinicalmetadataalignment differs from acousticregression",
+        "limitedsameclinicaltargets in mPower",
+        "cannot assumeexternalweightsavailable"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score",
+      "official_code": {
+        "url": "https://github.com/oelemento/VoiceFM-public",
+        "head_sha": "86d22629bde5d4e15194197da38e9c5323f48da9",
+        "license": "MIT"
+      }
+    },
+    {
+      "id": "wavlm_ser",
+      "title": "Adapting WavLM for Speech Emotion Recognition",
+      "year": 2024,
+      "doi_or_arxiv": "2405.04485",
+      "primary_pdf": {
+        "url": "https://arxiv.org/pdf/2405.04485",
+        "bytes": 272456,
+        "sha256": "a58b362a809cf35608d674f3fdb2c767b5e3b7c455cac682125cf11ecde0a46a",
+        "pdf_pages": 6,
+        "text_characters": 47566,
+        "full_text_extracted": true
+      },
+      "methodology_page_references": [
+        "2 pooling/head",
+        "3 training",
+        "4 ablations"
+      ],
+      "method": {
+        "endpoint": "MSPPodcast emotion classification",
+        "encoder": "WavLMlarge;CNNfrontendfrozen",
+        "readout": "learnedlayeraggregation,timepooling,smallprojection/head;mean/stdpoolingablations",
+        "optimizer": "AdamW",
+        "lr": 1e-05,
+        "weight_decay": 0.01,
+        "epochs": 20,
+        "batch": 32,
+        "max_training_span_seconds": 5,
+        "crop": "random5swhenlonger"
+      },
+      "missing_or_ambiguous_details": [
+        "paper states inconsistenthiddenwidthforWavLMlarge;actualcheckpointarchitecturemustwin",
+        "gender/text conditioningnotbiomarkerproof"
+      ],
+      "mpower_transfer": [
+        "pooling andsmallreadoutinspiration",
+        "existingWavLMweights alreadyavailable;nonewlargeencoderjustified"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score"
+    },
+    {
+      "id": "tabpfn",
+      "title": "Accurate predictions on small data with a tabular foundation model",
+      "year": 2025,
+      "doi_or_arxiv": "10.1038/s41586-024-08328-6",
+      "primary_pdf": {
+        "url": "https://www.nature.com/articles/s41586-024-08328-6.pdf",
+        "bytes": 16957699,
+        "sha256": "6b5ce3dba2ef7454ad0868ad733a64b4ac89bcd98307773fad1e0e977caaa013",
+        "full_text_extracted": true,
+        "pdf_pages": 23,
+        "text_characters": 177269
+      },
+      "methodology_page_references": [
+        "mainmethod+ExtendedDataTable5"
+      ],
+      "method": {
+        "endpoint": "smalltabularclassification/regression",
+        "learning": "pretrainedsynthetictasks;localin-contextprediction",
+        "original_regime": {
+          "max_rows": 10000,
+          "max_features": 500
+        },
+        "code": "PriorLabs tabpfn",
+        "weights": "Prior-Labs/TabPFN-v2-clf;Apachederivedadditionalattributionlicense"
+      },
+      "missing_or_ambiguous_details": [
+        "newerpackage/defaultweights differ from originalv2",
+        "currentweightterms mustbe inspected separately"
+      ],
+      "mpower_transfer": [
+        "cachedembeddingclassificationcandidate",
+        "fold-fit PCA128;initialtrainingpeople",
+        "TabICLpreferredforclearBSD3weights"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score"
+    },
+    {
+      "id": "tabicl",
+      "title": "TabICL: A Tabular Foundation Model for In-Context Learning on Large Data",
+      "year": 2025,
+      "doi_or_arxiv": "10.48550/arXiv.2502.05564",
+      "primary_pdf": {
+        "url": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/qu25d/qu25d.pdf",
+        "bytes": 2636850,
+        "sha256": "0a8b2b370f55a93af346ab889dd699256def80ef967740cfa876277ff9ae8617",
+        "full_text_extracted": true,
+        "pdf_pages": 31,
+        "text_characters": 169172
+      },
+      "methodology_page_references": [
+        "Section3 architecture",
+        "Section4 inference",
+        "Section5 evaluation",
+        "AppendixH ensemble"
+      ],
+      "method": {
+        "model": "columnembedding,rowinteraction,datasetICL;synthetic-onlypretraining",
+        "downstream": "fittraincontext;localpredict_proba;nomodelgradientupdates",
+        "original_ensemble": 32,
+        "preprocess": "z-normalizewith/withoutpowertransform;feature/classpermutations",
+        "query_attention": "queryrowsattendtrainingcontext,nototherqueryrows",
+        "checkpoint": "tabicl-classifier-v1-20250208.ckpt",
+        "license": "BSD-3-Clause"
+      },
+      "missing_or_ambiguous_details": [
+        "changingcurrentdefaultto2026weightswouldnotbe2025reproduction"
+      ],
+      "mpower_transfer": [
+        "PCA128fitinsideparticipantfolds",
+        "sameLRbaseline;localonly;disableautodownloadatruntime"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score",
+      "official_code": {
+        "url": "https://github.com/soda-inria/tabicl",
+        "license": "BSD-3-Clause; third-party notices in LICENSE"
+      }
+    },
+    {
+      "id": "tabiclv2",
+      "title": "TabICLv2: A Better, Faster, Scalable, and Open Tabular Foundation Model",
+      "year": 2026,
+      "doi_or_arxiv": "2602.11139",
+      "primary_pdf": {
+        "url": "https://arxiv.org/pdf/2602.11139",
+        "bytes": 15274950,
+        "sha256": "71554be35ba3847a14267912d9738f6049545cf74a30d860de1ed23d14d95246",
+        "full_text_extracted": true,
+        "pdf_pages": 79,
+        "text_characters": 419553
+      },
+      "methodology_page_references": [
+        "Sections3\u20136",
+        "AppendixA architecture",
+        "AppendixL ensemble"
+      ],
+      "method": {
+        "model": "target-aware columnembeddings,scalablesoftmax,newsyntheticprior,Muonpretraining",
+        "downstream": "localICL,notretrainingfoundation",
+        "TabArena_ensemble": 8,
+        "TALENT_ensemble": 32,
+        "checkpoint": "tabicl-classifier-v2-20260212.ckpt",
+        "license": "BSD-3-Clause"
+      },
+      "missing_or_ambiguous_details": [
+        "latestpaperpretrainingdiffers2025model",
+        "benchmarkdominancedoesnotproveaudioembeddinggain"
+      ],
+      "mpower_transfer": [
+        "boundedcurrentmethodcandidate8ensemblemembers",
+        "fold-PCA128;participanttraincontextonly"
+      ],
+      "status": "methodology_reviewed_not_a_claim_of_reproduced_score",
+      "official_code": {
+        "url": "https://github.com/soda-inria/tabicl",
+        "license": "BSD-3-Clause; third-party notices in LICENSE"
+      }
+    }
+  ]
+}

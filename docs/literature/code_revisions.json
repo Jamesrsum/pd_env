@@ -1,0 +1,22 @@
+{
+  "Jetliqs/PDVAT": {
+    "head_sha": "f8e240c88c49affc03c48d86a750788b1b2b9c3c",
+    "license": "not found"
+  },
+  "microsoft/LoRA": {
+    "head_sha": "c4593f060e6a368d7bb5af5273b8e42810cdef90",
+    "license": "MIT"
+  },
+  "tan90xx/CBA-Whisper": {
+    "head_sha": "cd7d8676522e043b7f6088b1356b3c4f23342b61",
+    "license": "not verified"
+  },
+  "kaen2891/stethoscope-guided_supervised_contrastive_learning": {
+    "head_sha": "2ed1bacc7121653805702f3a1afb5557a56f5a05",
+    "license": "not verified"
+  },
+  "oelemento/VoiceFM-public": {
+    "head_sha": "86d22629bde5d4e15194197da38e9c5323f48da9",
+    "license": "MIT"
+  }
+}

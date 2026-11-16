@@ -1,0 +1,5 @@
+{
+  "models": {
+    "hubert_base_ls960": "facebook/hubert-base-ls960"
+  }
+}

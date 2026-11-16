@@ -1,0 +1,30 @@
+{
+  "models": {
+    "tabicl_v1": {
+      "repo_id": "jingang/TabICL",
+      "revision": "4dcd344ece2c00be9e831fdd35bed57b5ad83e19",
+      "gated": false,
+      "files": [
+        {
+          "name": "tabicl-classifier-v1-20250208.ckpt",
+          "bytes": 108317991,
+          "sha256": "04c5c1d261c1f782dc9b263990dcfa5152b1949ed8451ad16c010cdafbea07e0",
+          "git_blob": null
+        }
+      ]
+    },
+    "tabicl_v2": {
+      "repo_id": "jingang/TabICL",
+      "revision": "4dcd344ece2c00be9e831fdd35bed57b5ad83e19",
+      "gated": false,
+      "files": [
+        {
+          "name": "tabicl-classifier-v2-20260212.ckpt",
+          "bytes": 110368038,
+          "sha256": "bdc7dbd5e4ff21f8f0456fcf90c6b7cdf72dbea960f2d05b19bec19f9b3d4ed0",
+          "git_blob": null
+        }
+      ]
+    }
+  }
+}

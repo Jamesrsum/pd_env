@@ -134,5 +134,10 @@ and backbone schedules, phase-labelled metrics and production weight audits.
 The [HeAR and representation-learning protocol](docs/HEAR_AND_REPRESENTATION_NEXT_STEPS.md)
 specifies gated-model readiness, frozen and controlled adaptation jobs, precise
 diagnosis contrastive/acoustic auxiliary objectives, and development-only
-classifier/fusion comparisons. The CPU panel is submitted; HeAR execution
-requires authorized model access. The final test remains sealed.
+classifier/fusion comparisons. The HeAR baselines and initial CPU panel have
+completed. The final test remains sealed.
+
+The [single-agent full-PDF literature review](docs/literature/REVIEW.md) covers
+direct PD methods and adjacent small-data fields. The [implementation guide](docs/LITERATURE_IMPLEMENTATION.md)
+documents LP-initialized full/LoRA comparisons, detached-classifier HuBERT SupCon,
+and local TabICL2025/2026 classifiers, with source fidelity, deviations and Slurm status.

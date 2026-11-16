@@ -1,0 +1,109 @@
+{
+  "status": "tabular_completed_encoder_trials_running",
+  "reviewer_count": 1,
+  "full_PDFs_reviewed_and_verified": 13,
+  "private_root_relative_to_benchmark_root": "literature_methods/20261116T091246Z",
+  "max_gpu_concurrency": 2,
+  "test_labels_read": false,
+  "jobs": {
+    "hear_smoke_job": "27613592",
+    "speech_smoke_job": "27614603",
+    "tabular_smoke_job": "27613594",
+    "tabular_job": "27613595",
+    "speech_array_job": "27614604",
+    "hear_array_job": "27613597"
+  },
+  "smoke_audits": {
+    "hear": {
+      "status": "real_pretrained_smoke_passed",
+      "family": "hear",
+      "methods": [
+        "hear_lp_frozen",
+        "hear_lp_full",
+        "hear_lp_lora"
+      ],
+      "test_labels_read": false,
+      "initialization_matched": true,
+      "frozen_parameters_unchanged": true
+    },
+    "tabular": {
+      "status": "smoke_complete",
+      "comparisons": 3,
+      "local_inference_only": true,
+      "test_labels_read": false
+    },
+    "speech": {
+      "status": "real_pretrained_smoke_passed",
+      "family": "speech",
+      "methods": [
+        "hubert_ce",
+        "hubert_detached_supcon"
+      ],
+      "test_labels_read": false,
+      "initialization_matched": true,
+      "frozen_parameters_unchanged": true
+    }
+  },
+  "unit_checks": {
+    "new_literature_methods": 11,
+    "existing_HeAR_and_controlled_adaptation": 26
+  },
+  "claim": "published_method_mechanisms_adapted_to_mPower_not_exact_original_dataset_SOTA_numbers",
+  "previous_finetuning_was_LoRA": false,
+  "new_LoRA": {
+    "rank": 8,
+    "alpha": 16,
+    "targets": [
+      "attention_query",
+      "attention_value"
+    ],
+    "trainable_adapter_parameters": 786432,
+    "original_backbone_parameters": 303199744,
+    "base_weights_frozen": true
+  },
+  "initial_failed_speech_smoke": {
+    "job": "27613579",
+    "reason": "mask augmentation disabled before native parameter construction",
+    "fix": "load original config and all tensors first, then disable augmentation; strict loading remains required",
+    "dependent_full_jobs": "cancelled before execution"
+  },
+  "published_PDFs_and_full_text_in_Git": false,
+  "new_accuracy_improvement_claimed": false,
+  "tabular_completed": {
+    "job": "27613595",
+    "comparisons": 18,
+    "elapsed_seconds": 117,
+    "analysis": "literature_tabular/summary.json",
+    "best_this_matched_panel": {
+      "encoder": "wavlm_large",
+      "classifier": "TabICLv2",
+      "auroc": 0.8811179773960854,
+      "matched_LR_auroc": 0.8717780023026858
+    },
+    "independent_test_SOTA_claimed": false
+  },
+  "job_states_at_inspection": {
+    "27613592": "COMPLETED",
+    "27613593": "SUPERSEDED",
+    "27613594": "COMPLETED",
+    "27613595": "COMPLETED",
+    "27613597_0": "RUNNING",
+    "27613597_1": "PENDING_ARRAY_LIMIT",
+    "27613597_2": "PENDING_ARRAY_LIMIT",
+    "27614603": "COMPLETED",
+    "27614604_0": "RUNNING",
+    "27614604_1": "PENDING_ARRAY_LIMIT"
+  },
+  "superseded_speech_jobs": {
+    "smoke": "27613593",
+    "array": "27613596",
+    "reason": "Transformers copied configuration; disable augmentation on loaded backbone.config, not original config object",
+    "partial_production_metrics_included": false
+  },
+  "speech_private_subdirectory": "speech_retry_20261116T092846Z",
+  "actual_loaded_speech_augmentation": {
+    "mask_time_prob": 0.0,
+    "mask_feature_prob": 0.0,
+    "layerdrop": 0.0
+  }
+}

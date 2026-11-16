@@ -1,0 +1,36 @@
+{
+  "resolved_at": "2026-11-16T08:46:49.123722+00:00",
+  "models": {
+    "hubert_base_ls960": {
+      "repo_id": "facebook/hubert-base-ls960",
+      "revision": "dba3bb02fda4248b6e082697eee756de8fe8aa8a",
+      "gated": false,
+      "files": [
+        {
+          "name": "README.md",
+          "bytes": 2596,
+          "sha256": null,
+          "git_blob": "1e39166dd1c0b9bc1d66ecbeddf074c788dea1df"
+        },
+        {
+          "name": "config.json",
+          "bytes": 1385,
+          "sha256": null,
+          "git_blob": "5d89400e973a3e0330ca2f517e65d3231e44c762"
+        },
+        {
+          "name": "preprocessor_config.json",
+          "bytes": 213,
+          "sha256": null,
+          "git_blob": "8df8da1de6563b3f11638f4df5f2336f4ca94c04"
+        },
+        {
+          "name": "pytorch_model.bin",
+          "bytes": 377569754,
+          "sha256": "062249fffb353eab67547a2fbc129f7c31a2f459faf641b19e8fb007cc5c48ad",
+          "git_blob": null
+        }
+      ]
+    }
+  }
+}
