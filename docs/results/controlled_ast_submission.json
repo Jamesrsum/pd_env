@@ -1,0 +1,68 @@
+{
+  "root": "/mnt/isilon/wang_lab/wangr7/projects/pd_data/mpower_benchmarks/controlled_ast/20261116T002439Z",
+  "protocol": "paired AST native-LN head, shared best warmup, independent head/backbone LR",
+  "max_gpu_concurrency": 2,
+  "policies": [
+    "frozen",
+    "last2",
+    "full"
+  ],
+  "test_labels_read": false,
+  "smoke_job": "27612212",
+  "warmup_job": "27612213",
+  "branch_array_job": "27612214",
+  "research_agents": 3,
+  "unit_tests_passed": 4,
+  "full_run_complete": false,
+  "old_ast_backbone_update_verified": true,
+  "old_ast_auroc": {
+    "head_only_30epochs": 0.8766535867854038,
+    "warmup_best": 0.8685236965154256,
+    "full_adaptation_best": 0.8695223102046571
+  },
+  "smoke_state": "COMPLETED",
+  "smoke_verified": true,
+  "smoke_checks": {
+    "warmup": {
+      "status": "complete",
+      "selected_policy": "frozen",
+      "backbone_changed": false,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true,
+      "participants_train": 8,
+      "participants_val": 8,
+      "test_labels_read": false
+    },
+    "frozen": {
+      "status": "complete",
+      "selected_policy": "frozen",
+      "backbone_changed": false,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true,
+      "participants_train": 8,
+      "participants_val": 8,
+      "test_labels_read": false
+    },
+    "last2": {
+      "status": "complete",
+      "selected_policy": "last2",
+      "backbone_changed": true,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true,
+      "participants_train": 8,
+      "participants_val": 8,
+      "test_labels_read": false
+    },
+    "full": {
+      "status": "complete",
+      "selected_policy": "full",
+      "backbone_changed": true,
+      "head_changed": true,
+      "frozen_parameters_unchanged": true,
+      "participants_train": 8,
+      "participants_val": 8,
+      "test_labels_read": false
+    }
+  },
+  "identical_branch_initialization_verified": true
+}

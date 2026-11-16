@@ -1,0 +1,19 @@
+seed: 20261112
+model: ast_audioset
+head_kind: layernorm_linear
+optimizer: sgd
+weight_decay: 0.01
+warmup_epochs: 10
+adaptation_epochs: 20
+warmup_head_lr: 0.001
+adapt_head_lr: 0.001
+head_min_lr: 0.00001
+backbone_lr: 0.00001
+backbone_min_lr: 0.000001
+effective_batch_size: 32
+microbatch_size: 4
+max_grad_norm: 1.0
+policies: [frozen, last2, full]
+selection_metric: validation_initial_assessment_AUROC_then_log_loss
+final_test: sealed
+interpretation: controlled_AST_experiment_not_exact_paper_replication

@@ -123,3 +123,8 @@ The [frozen development protocol](docs/FROZEN_TESTING_IMPLEMENTATION.md) impleme
 shared source spans, native-channel QC, both context conditions, native AST
 pooling, pooled caches and participant-balanced validation-only model selection.
 Use `scripts/submit_frozen_testing.py` for the dependency-controlled multi-job run.
+
+The [controlled AST audit](docs/CONTROLLED_AST_REVIEW.md) explains the paper
+comparison and fixes the classifier-LR/warm-up confounds in the first adaptation
+batch. New paired branches use one best warm-up checkpoint, independent head
+and backbone schedules, phase-labelled metrics and production weight audits.
